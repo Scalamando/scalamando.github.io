@@ -7,13 +7,31 @@
     </head>
     <body style="margin: 0px; overflow: hidden">
         <a-scene embedded arjs>
-            <a-marker type="pattern" preset="custom" url="./pattern-emi.patt">
+            <a-assets>
+                <video
+                    id="oof"
+                    autoplay
+                    loop="true"
+                    src="./ar-res/videos/Oof.mp4"
+                ></video>
+            </a-assets>
+            <a-marker
+                type="pattern"
+                preset="custom"
+                url="./ar-res/marker/pattern-emi.patt"
+            >
                 <a-entity
                     position="0 0 0"
                     size="0.15"
                     scale="0.5 0.5 0.5"
-                    gltf-model="./cube.gltf"
+                    gltf-model="./ar-res/models/cube.gltf"
                 ></a-entity>
+                <a-video
+                    src="#oof"
+                    width="16"
+                    height="9"
+                    position="0 0 1"
+                ></a-video>
             </a-marker>
             <a-entity camera></a-entity>
         </a-scene>
