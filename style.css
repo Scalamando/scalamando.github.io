@@ -1,7 +1,10 @@
 @font-face {
 	font-family: "Space Grotesk";
 	font-display: swap;
-	src: url(./assets/SpaceGrotesk.woff2) format("woff2");
+	src: url(assets/SpaceGrotesk-subset.woff2) format("woff2"),
+		url(assets/SpaceGrotesk-subset.woff) format("woff");
+	unicode-range: U+20, U+27, U+2C, U+47-49, U+4C, U+52, U+61, U+62, U+64-66,
+		U+68, U+69, U+6B-70, U+72-77, U+79;
 	font-weight: 1 999;
 }
 
@@ -132,11 +135,11 @@ header > p {
 }
 
 .deco--underline::after {
-	content: '';
-    background: url(./assets/details/underline.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 12px;
+	content: "";
+	background: url(./assets/details/underline.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 12px;
 	position: absolute;
 	left: -0.25rem;
 	right: -0.25rem;
@@ -144,15 +147,15 @@ header > p {
 }
 
 .deco--circle::after {
-    content: ''; ;
-    background: url(./assets/details/circle.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    left: calc(clamp(0.2rem, 1vw, 0.45rem) * -1);
-    right: calc(clamp(0.3rem, 1vw, 0.6rem) * -1);
-    top: calc(clamp(0.15rem, 0.5vw, 0.4rem) * -1);
-    bottom: calc(clamp(0.6rem, 1vw, 0.4rem) * -1);
+	content: "";
+	background: url(./assets/details/circle.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	left: calc(clamp(0.2rem, 1vw, 0.45rem) * -1);
+	right: calc(clamp(0.3rem, 1vw, 0.6rem) * -1);
+	top: calc(clamp(0.15rem, 0.5vw, 0.4rem) * -1);
+	bottom: calc(clamp(0.6rem, 1vw, 0.4rem) * -1);
 }
 
 @media screen and (min-width: 675px) {
@@ -170,7 +173,7 @@ header > p {
 	}
 
 	.deco--underline::after {
-        bottom: -0.6rem;
+		bottom: -0.6rem;
 	}
 }
 
