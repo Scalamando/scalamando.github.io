@@ -70,7 +70,7 @@ header > h2 {
 	align-self: center;
 }
 
-header > h2 > span {
+header > h2 > strong {
 	font-weight: 600;
 	color: var(--gray-50);
 }
@@ -132,6 +132,10 @@ header > p {
 
 .deco {
 	position: relative;
+}
+
+.deco::after {
+    pointer-events: none;
 }
 
 .deco--underline::after {
