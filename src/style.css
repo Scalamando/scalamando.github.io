@@ -35,8 +35,8 @@ body {
 
 body {
 	font-family: "Space Grotesk", sans-serif;
-	background: url(./assets/noise.svg),
-		linear-gradient(126.6deg, var(--gray-700) 17.05%, var(--gray-900) 81.22%);
+	background: url('data-url:./assets/noise.svg'),
+		linear-gradient(120deg, #21424d, #060b1c);
 	display: grid;
 	place-content: center;
 	gap: clamp(2.5rem, 8vw, 3.5rem);
@@ -123,11 +123,11 @@ header > p {
 }
 
 .icon--github::before {
-	content: url(./assets/fa-brands_github.svg);
+	content: url('data-url:./assets/fa-brands_github.svg');
 }
 
 .icon--linkedin::before {
-	content: url(./assets/fa-brands_linkedin.svg);
+	content: url('data-url:./assets/fa-brands_linkedin.svg');
 }
 
 .deco {
@@ -135,12 +135,12 @@ header > p {
 }
 
 .deco::after {
-    pointer-events: none;
+	pointer-events: none;
 }
 
 .deco--underline::after {
 	content: "";
-	background: url(./assets/details/underline.svg);
+	background: url('data-url:./assets/details/underline.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	height: 12px;
@@ -152,7 +152,7 @@ header > p {
 
 .deco--circle::after {
 	content: "";
-	background: url(./assets/details/circle.svg);
+	background: url('data-url:./assets/details/circle.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;

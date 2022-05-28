@@ -3,7 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@parcel/config-default': ^2.6.0
   '@parcel/core': ^2.6.0
+  '@parcel/optimizer-data-url': ^2.6.0
   '@parcel/transformer-html': ^2.6.0
+  '@parcel/transformer-inline-string': ^2.6.0
   glyphhanger: ^5.0.0
   parcel: ^2.6.0
   parcel-transformer-meta-image: ^1.0.4
@@ -12,7 +14,9 @@ specifiers:
 devDependencies:
   '@parcel/config-default': 2.6.0_@parcel+core@2.6.0
   '@parcel/core': 2.6.0
+  '@parcel/optimizer-data-url': 2.6.0_@parcel+core@2.6.0
   '@parcel/transformer-html': 2.6.0_@parcel+core@2.6.0
+  '@parcel/transformer-inline-string': 2.6.0_@parcel+core@2.6.0
   glyphhanger: 5.0.0
   parcel: 2.6.0
   parcel-transformer-meta-image: 1.0.4_@parcel+core@2.6.0
@@ -414,6 +418,18 @@ packages:
       - '@parcel/core'
     dev: true
 
+  /@parcel/optimizer-data-url/2.6.0_@parcel+core@2.6.0:
+    resolution: {integrity: sha512-D8CoxvkIkIXSZR6uhFMDGMjMxVqyJlo95L/WYxcY19qHp2Gjxmv6iaQMMdsEFFpOxj+nB2Rzkq8QUZgXetZIcw==}
+    engines: {node: '>= 12.0.0', parcel: ^2.6.0}
+    dependencies:
+      '@parcel/plugin': 2.6.0_@parcel+core@2.6.0
+      '@parcel/utils': 2.6.0
+      isbinaryfile: 4.0.10
+      mime: 2.6.0
+    transitivePeerDependencies:
+      - '@parcel/core'
+    dev: true
+
   /@parcel/optimizer-htmlnano/2.6.0_@parcel+core@2.6.0:
     resolution: {integrity: sha512-HmvcUoYpfdx8ZfID4WOj/SE8N78NEBmzAffZ8f827mYMr4ZrbKzAgg6OG3tBbfF0zxH0bIjZcwqwZYk4SdbG7g==}
     engines: {node: '>= 12.0.0', parcel: ^2.6.0}
@@ -700,6 +716,15 @@ packages:
       '@parcel/plugin': 2.6.0_@parcel+core@2.6.0
       '@parcel/workers': 2.6.0_@parcel+core@2.6.0
       nullthrows: 1.1.1
+    dev: true
+
+  /@parcel/transformer-inline-string/2.6.0_@parcel+core@2.6.0:
+    resolution: {integrity: sha512-YlwlxkyiTLIzFhuVTfC97/Ww8xRL0XZaT81gmtQgd+8r9TYyC6tGey64Qp9XrpwvCdM5g9AYXho2wUhadznuWQ==}
+    engines: {node: '>= 12.0.0', parcel: ^2.6.0}
+    dependencies:
+      '@parcel/plugin': 2.6.0_@parcel+core@2.6.0
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-js/2.6.0_@parcel+core@2.6.0:
@@ -1803,6 +1828,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /isbinaryfile/4.0.10:
+    resolution: {integrity: sha512-iHrqe5shvBUcFbmZq9zOQHBoeOhZJu6RQGrDpBgenUm/Am+F3JM2MgQj+rK3Z601fzrL5gLZWtAPH2OBaSVcyw==}
+    engines: {node: '>= 8.0.0'}
+    dev: true
+
   /isstream/0.1.2:
     resolution: {integrity: sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=}
     dev: true
@@ -2005,6 +2035,12 @@ packages:
   /mime/1.6.0:
     resolution: {integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==}
     engines: {node: '>=4'}
+    hasBin: true
+    dev: true
+
+  /mime/2.6.0:
+    resolution: {integrity: sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==}
+    engines: {node: '>=4.0.0'}
     hasBin: true
     dev: true
 
