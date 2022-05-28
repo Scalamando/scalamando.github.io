@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "subset-fonts": "glyphhanger ./index.html --subset=\"./assets/SpaceGrotesk.woff2\" --formats=woff2,woff",
-    "dev": "parcel src/index.html",
+    "dev": "rimraf dist && parcel src/index.html",
     "build": "parcel build src/index.html"
   },
   "repository": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Scalamando/scalamando.github.io#readme",
   "devDependencies": {
     "glyphhanger": "^5.0.0",
-    "parcel": "^2.6.0"
+    "parcel": "^2.6.0",
+    "rimraf": "^3.0.2"
   }
 }

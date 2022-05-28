@@ -3,10 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   glyphhanger: ^5.0.0
   parcel: ^2.6.0
+  rimraf: ^3.0.2
 
 devDependencies:
   glyphhanger: 5.0.0
   parcel: 2.6.0
+  rimraf: 3.0.2
 
 packages:
 
