@@ -2,11 +2,11 @@
   "name": "scalamando.github.io",
   "version": "1.0.0",
   "description": "",
+  "source": "src/index.html",
   "scripts": {
-    "subset-fonts": "glyphhanger ./index.html --subset=\"./assets/SpaceGrotesk.woff2\" --formats=woff2,woff",
-    "compress-images": "imagemin ./assets/**/*.{png,svg}",
-    "dev": "rimraf dist && parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "subset-fonts": "glyphhanger ./index.html --subset=\"./assets/fonts/SpaceGrotesk.woff2\" --formats=woff2,woff",
+    "dev": "rimraf dist && parcel",
+    "build": "rimraf dist && parcel build"
   },
   "repository": {
     "type": "git",

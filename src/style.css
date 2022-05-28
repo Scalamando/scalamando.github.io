@@ -1,12 +1,4 @@
-@font-face {
-	font-family: "Space Grotesk";
-	font-display: swap;
-	src: url(assets/SpaceGrotesk-subset.woff2) format("woff2"),
-		url(assets/SpaceGrotesk-subset.woff) format("woff");
-	unicode-range: U+20, U+27, U+2C, U+47-49, U+4C, U+52, U+61, U+62, U+64-66,
-		U+68, U+69, U+6B-70, U+72-77, U+79;
-	font-weight: 1 999;
-}
+@import './assets/fonts/fonts.css';
 
 * {
 	margin: 0;
@@ -123,11 +115,11 @@ header > p {
 }
 
 .icon--github::before {
-	content: url('data-url:./assets/fa-brands_github.svg');
+	content: url('data-url:./assets/icons/fa-brands_github.svg');
 }
 
 .icon--linkedin::before {
-	content: url('data-url:./assets/fa-brands_linkedin.svg');
+	content: url('data-url:./assets/icons/fa-brands_linkedin.svg');
 }
 
 .deco {
