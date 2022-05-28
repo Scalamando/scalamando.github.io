@@ -1,13 +1,21 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@parcel/config-default': ^2.6.0
+  '@parcel/core': ^2.6.0
+  '@parcel/transformer-html': ^2.6.0
   glyphhanger: ^5.0.0
   parcel: ^2.6.0
+  parcel-transformer-meta-image: ^1.0.4
   rimraf: ^3.0.2
 
 devDependencies:
+  '@parcel/config-default': 2.6.0_@parcel+core@2.6.0
+  '@parcel/core': 2.6.0
+  '@parcel/transformer-html': 2.6.0_@parcel+core@2.6.0
   glyphhanger: 5.0.0
   parcel: 2.6.0
+  parcel-transformer-meta-image: 1.0.4_@parcel+core@2.6.0
   rimraf: 3.0.2
 
 packages:
@@ -2162,6 +2170,15 @@ packages:
   /p-try/2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
+    dev: true
+
+  /parcel-transformer-meta-image/1.0.4_@parcel+core@2.6.0:
+    resolution: {integrity: sha512-BmaTBVB78/cTfEPt/lt896JbbLGS/52fmzDXRLfiK8j6sTkZ6zTb4b9F8hzwfpOJdA0tej9yYoa912Wb/x1FQA==}
+    engines: {node: '>= 8.0.0', parcel: ^2.0.0-alpha.1.1}
+    dependencies:
+      '@parcel/plugin': 2.6.0_@parcel+core@2.6.0
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /parcel/2.6.0:

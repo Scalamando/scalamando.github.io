@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/Scalamando/scalamando.github.io#readme",
   "devDependencies": {
+    "@parcel/config-default": "^2.6.0",
+    "@parcel/core": "^2.6.0",
+    "@parcel/transformer-html": "^2.6.0",
     "glyphhanger": "^5.0.0",
     "parcel": "^2.6.0",
+    "parcel-transformer-meta-image": "^1.0.4",
     "rimraf": "^3.0.2"
   }
 }
