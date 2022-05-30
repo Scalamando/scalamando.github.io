@@ -42,35 +42,74 @@ a {
 	line-height: 1;
 }
 
+@keyframes header{
+    from {
+        transform: none;
+    }
+    to {
+        transform: translate(var(--translate));
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px)
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 header {
 	display: flex;
 	flex-direction: column;
 	gap: clamp(0.5rem, 2vw, 1rem);
-}
+    opacity: 0;
+    animation: fade-in 1s ease 0.25s forwards;
 
-header > h1 {
-	color: var(--gray-50);
-	font-size: clamp(4rem, 20vw, 8rem);
-	font-weight: 600;
-	text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18), 4px 4px 0px var(--accent);
-}
+    & > h1 {
+        position: relative;
+        color: var(--gray-50);
+        font-size: clamp(4rem, 20vw, 8rem);
+        font-weight: 600;
+        --translate: 3.25px, 3.25px;
 
-header > h2 {
-	color: var(--gray-300);
-	font-size: clamp(1rem, 5.5vw, 2.25rem);
-	font-weight: 350;
-	align-self: center;
-}
+        &::after {
+            content: 'Raimund';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            color: var(--accent);
+            z-index: -1;
+            animation: header 1s ease 1s forwards;
+        }
 
-header > h2 > strong {
-	font-weight: 600;
-	color: var(--gray-50);
-}
+        @media screen and (min-width: 675px) {
+            --translate: 5.3px, 5.3px;
+        }
+    }
 
-header > p {
-	font-size: clamp(1rem, 3.75vw, 1.5rem);
-	font-weight: 500;
-	color: var(--gray-400);
+    & > h2 {
+        color: var(--gray-300);
+        font-size: clamp(1rem, 5.5vw, 2.25rem);
+        font-weight: 350;
+        align-self: center;
+
+        & > strong {
+            font-weight: 600;
+            color: var(--gray-50);
+        }
+    }
+
+    & > p {
+        font-size: clamp(1rem, 3.75vw, 1.5rem);
+        font-weight: 500;
+        color: var(--gray-400);
+    }
 }
 
 .socials {
@@ -78,40 +117,64 @@ header > p {
 	justify-content: center;
 	flex-direction: column;
 	gap: clamp(1rem, 4vw, 1.5rem);
-}
 
-.socials > a {
-	color: var(--gray-900);
-	font-size: clamp(1rem, 4.5vw, 1.5rem);
-	font-weight: 450;
-	background: var(--gray-200);
-	border-radius: 0.25rem;
-	padding: 0.85rem 1.5rem;
-	text-decoration: none;
-}
+    & > a {
+        color: var(--gray-900);
+        font-size: clamp(1rem, 4.5vw, 1.5rem);
+        font-weight: 450;
+        background: var(--gray-200);
+        border-radius: 0.25rem;
+        padding: 0.85rem 1.5rem;
+        text-decoration: none;
+        opacity: 0;
+        animation: fade-in 1s ease forwards;
 
-.socials > a:hover {
-	background: var(--gray-50);
-}
+        &:nth-child(1) {
+            animation-delay: 0.55s;
+        }
 
-.socials > a:active {
-	background: var(--gray-400);
+        &:nth-child(2) {
+            animation-delay: 0.75s;
+        }
+
+        &:hover {
+            background: var(--gray-50);
+
+            & .underline-anim {
+                background-size: 100% 2px;
+            }
+        }
+
+        &:active {
+            background: var(--gray-400);
+        }
+    }
+
+    @media screen and (min-width: 675px) {
+        flex-direction: row;
+		gap: 1.5rem;
+    }
 }
 
 .icon {
 	display: flex;
 	justify-content: center;
 	gap: 0.5rem;
-}
 
-.icon::before {
-	display: block;
-	height: clamp(1rem, 4.5vw, 1.5rem);
-	width: clamp(1rem, 4.5vw, 1.5rem);
-}
+    &::before {
+        display: block;
+        height: clamp(1rem, 4.5vw, 1.5rem);
+        width: clamp(1rem, 4.5vw, 1.5rem);
+    }
 
-.icon::after {
-	content: "";
+    &::after {
+        content: "";
+
+        @media screen and (min-width: 675px) {
+            content: none;
+        }
+    }
+
 }
 
 .icon--github::before {
@@ -124,12 +187,11 @@ header > p {
 
 .deco {
 	position: relative;
-}
 
-.deco::after {
-	pointer-events: none;
+    &::after {
+        pointer-events: none;
+    }
 }
-
 .deco--underline::after {
 	content: "";
 	background: url('data-url:./assets/details/underline.svg');
@@ -140,6 +202,10 @@ header > p {
 	left: -0.25rem;
 	right: -0.25rem;
 	bottom: -0.8rem;
+
+    @media screen and (min-width: 675px) {
+        bottom: -0.6rem;
+    }
 }
 
 .deco--circle::after {
@@ -154,22 +220,10 @@ header > p {
 	bottom: calc(clamp(0.6rem, 1vw, 0.4rem) * -1);
 }
 
-@media screen and (min-width: 675px) {
-	header > h1 {
-		text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18), 6px 6px 0px var(--accent);
-	}
-
-	.socials {
-		flex-direction: row;
-		gap: 1.5rem;
-	}
-
-	.icon::after {
-		content: none;
-	}
-
-	.deco--underline::after {
-		bottom: -0.6rem;
-	}
+.underline-anim {
+    background: linear-gradient(to right, var(--gray-900), var(--gray-800));
+    background-size: 0 2px;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease;
 }
-
