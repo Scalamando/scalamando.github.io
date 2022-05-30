@@ -7,7 +7,7 @@
     "url": "git+https://github.com/Scalamando/scalamando.github.io.git"
   },
   "scripts": {
-    "build-all": "node ./scripts/generate-site.js"
+    "build-all": "pnpm -r build && node ./scripts/generate-site.js"
   },
   "author": "",
   "license": "ISC",
