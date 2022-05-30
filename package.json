@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/Scalamando/scalamando.github.io.git"
   },
+  "scripts": {
+    "build-all": "node ./scripts/generate-site.js"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -13,17 +16,7 @@
   },
   "homepage": "https://github.com/Scalamando/scalamando.github.io#readme",
   "devDependencies": {
-    "@parcel/optimizer-data-url": "^2.6.0",
-    "@parcel/transformer-inline-string": "^2.6.0",
-    "glyphhanger": "^5.0.0",
-    "parcel": "^2.6.0",
-    "parcel-transformer-meta-image": "^1.0.4",
-    "rimraf": "^3.0.2"
-  },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "@parcel/transformer-css": {
-    "drafts": {
-      "nesting": true
-    }
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0"
   }
 }
