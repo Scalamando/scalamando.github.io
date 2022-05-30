@@ -1,17 +1,13 @@
 {
-  "name": "scalamando.github.io",
+  "name": "index",
   "version": "1.0.0",
   "description": "",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Scalamando/scalamando.github.io.git"
+  "source": "src/index.html",
+  "scripts": {
+    "subset-fonts": "glyphhanger ./index.html --subset=\"./assets/fonts/SpaceGrotesk.woff2\" --formats=woff2,woff",
+    "dev": "rimraf dist && parcel",
+    "build": "rimraf dist && parcel build"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Scalamando/scalamando.github.io/issues"
-  },
-  "homepage": "https://github.com/Scalamando/scalamando.github.io#readme",
   "devDependencies": {
     "@parcel/optimizer-data-url": "^2.6.0",
     "@parcel/transformer-inline-string": "^2.6.0",
