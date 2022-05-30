@@ -18,5 +18,10 @@
   "devDependencies": {
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0"
+  },
+  "@parcel/transformer-css": {
+    "drafts": {
+      "nesting": true
+    }
   }
 }

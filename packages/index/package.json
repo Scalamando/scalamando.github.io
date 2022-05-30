@@ -16,10 +16,5 @@
     "parcel-transformer-meta-image": "^1.0.4",
     "rimraf": "^3.0.2"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "@parcel/transformer-css": {
-    "drafts": {
-      "nesting": true
-    }
-  }
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
