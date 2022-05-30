@@ -2,7 +2,7 @@
   "name": "@slides/test",
   "private": true,
   "scripts": {
-    "build": "slidev build --base /slides/test",
+    "build": "slidev build --download --base /slides/test/",
     "dev": "slidev --open",
     "export": "slidev export"
   },
