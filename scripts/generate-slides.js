@@ -1,8 +1,5 @@
 const glob = require("fast-glob");
 const fs = require("fs-extra");
-const util = require("util");
-const exec = util.promisify(require("child_process").exec);
-const { join: joinPath } = require("path");
 
 const SLIDES_ROOT = "./slides";
 const SLIDES_ENTRY = "slides.md";
@@ -26,14 +23,6 @@ async function generateSlides() {
 		const targetDir = `./dist/slides/${path.url}`;
 		await fs.ensureDir(targetDir);
 
-/* 		const command = `pnpm slidev build ${SLIDES_ENTRY} -- --base="/slides/${path.url}/"`;
-
-		const { err } = await exec(command, {
-			cwd: joinPath(process.cwd(), path.source),
-		});
-
-        if(err) return;
- */
         await fs.copy(`${path.source}/dist`, targetDir);
         fs.remove(`${path.source}/dist`);
 	}
