@@ -1,4 +1,10 @@
 node_modules/
+dist/
+
 **/.parcel-cache
 **/.pnpm-debug.log
-dist/
+**/*.local
+
+src/slides/**/index.html
+src/slides/.remote-assets
+src/slides/components.d.ts
