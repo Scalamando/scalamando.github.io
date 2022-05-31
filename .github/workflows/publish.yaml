@@ -19,7 +19,7 @@ jobs:
           - recursive: true
             cwd: ./
 
-    - run: pnpm build-all
+    - run: pnpm build
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
