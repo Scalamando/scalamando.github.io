@@ -19,13 +19,15 @@ async function generateSlides() {
 	const slidePaths = await getAllSlidePaths();
 	console.log(slidePaths);
 
-	for (const path of slidePaths) {
+    await Promise.all(slidePaths.map(async (path) => {
 		const targetDir = `./dist/slides/${path.url}`;
 		await fs.ensureDir(targetDir);
 
         await fs.copy(`${path.source}/dist`, targetDir);
         fs.remove(`${path.source}/dist`);
-	}
+
+        console.log("Copied slides in", path.url);
+	}));
 }
 
 generateSlides();
