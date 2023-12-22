@@ -52,7 +52,7 @@ const { title } = Astro.props;
 						</Tab>
 					</TabGroup>
 				</nav>
-				<div class="rounded-2xl border-2 border-black bg-white p-4">
+				<div class="glow-rainbow w-full rounded-2xl border-2 border-black bg-white">
 					<slot name="header" />
 				</div>
 			</section>
@@ -153,5 +153,27 @@ const { title } = Astro.props;
 	/* dotted background pattern */
 	body {
 		background: radial-gradient(#0a0a0a44 1px, transparent 0) -19px -19px/40px 40px;
+	}
+
+	.glow-rainbow::after {
+		content: "";
+		position: absolute;
+		z-index: -20;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border-radius: 1rem;
+		max-height: max(50vw, 700px);
+		background: conic-gradient(
+			at 50% 50%,
+			#f52c2c 22.5deg,
+			#f79d33 90deg,
+			#49e362 180deg,
+			#2ad2e8 270deg,
+			#be53ff 330deg
+		);
+		filter: blur(100px);
+		opacity: 0.4;
 	}
 </style>
