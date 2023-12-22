@@ -29,8 +29,8 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="flex">
-		<div class="mx-auto flex max-w-[1024px] flex-col gap-10 p-4">
+	<body class="flex p-2 md:p-4">
+		<div class="mx-auto flex w-full max-w-[1024px] flex-col gap-10">
 			<section class="relative isolate mt-16 drop-shadow">
 				<nav class="absolute bottom-[calc(100%-2rem)] left-0 -z-10">
 					<TabGroup>
@@ -103,7 +103,7 @@ const { title } = Astro.props;
 						</div>
 					</div>
 				</section>
-				<section class="mt-12 flex flex-col md:flex-row items-center gap-2 justify-between">
+				<section class="mt-12 flex flex-col items-center justify-between gap-2 md:flex-row">
 					<span class="order-3 md:order-none">
 						&copy; Raimund Canzler {new Date().toLocaleDateString("en-US", { year: "numeric" })}
 					</span>
@@ -114,7 +114,8 @@ const { title } = Astro.props;
 							<a
 								href="https://github.com/Scalamando/scalamando.github.io"
 								class="font-medium underline"
-								><IconGitHub class="inline -translate-y-px align-middle" />Source</a>
+								><IconGitHub class="inline -translate-y-px align-middle" />Source</a
+							>
 						</li>
 					</ul>
 					<span>
