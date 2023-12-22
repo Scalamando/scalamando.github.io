@@ -1,0 +1,35 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const projects = await getCollection("projects");
+	return projects.map((project) => ({
+		params: { slug: project.slug },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout title={`${project.data.titleShort} - Raimund`}>
+	<div slot="header" class="prose">
+		<h1>{project.data.title}</h1>
+		<img src={project.data.image.src} alt={project.data.image.alt} />
+		<Content />
+		<span class="block text-sm font-bold uppercase">Last updated</span>
+		<time
+			>{
+				project.data.lastUpdate.toLocaleString("en-US", {
+					year: "numeric",
+					month: "long",
+					day: "numeric",
+					hour: "numeric",
+					minute: "2-digit",
+				})
+			}</time
+		>
+	</div>
+</Layout>
