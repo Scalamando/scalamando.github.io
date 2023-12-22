@@ -12,11 +12,12 @@ export default {
 			transparent: "transparent",
 			current: "currentColor",
 			black: "#0A0A0A",
+			slate: colors.slate,
 			white: colors.white,
 			cyan: colors.cyan,
 			lime: colors.lime,
 		},
-		dropShadow: { DEFAULT: "6px 6px 0 rgb(0 0 0 / 0.25)" },
+		dropShadow: { DEFAULT: "6px 6px 0 rgb(0 0 0 / 0.25)", "lifted": "8px 8px 0 rgb(0 0 0 / 0.25)" },
 		extend: {
 			colors: {
 				"brand-discord": "#5865F2",
