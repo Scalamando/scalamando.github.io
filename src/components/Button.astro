@@ -1,18 +1,17 @@
 ---
-interface Props {
-	class?: string;
-	onclick?: string;
-}
+import type { HTMLAttributes } from "astro/types";
 
-const { onclick, class: className } = Astro.props;
+interface Props extends HTMLAttributes<"button"> {}
+
+const { class: className, ...attrs } = Astro.props;
 ---
 
 <button
-	onclick={onclick}
 	class:list={[
-		"drop-shadow flex items-center gap-2 rounded-xl border-2 text-lg border-black bg-white px-6 py-3.5",
+		"flex items-center gap-2 rounded-xl border-2 border-black bg-white px-6 py-3.5 text-lg drop-shadow",
 		className,
 	]}
+	{...attrs}
 >
 	<slot />
 </button>
