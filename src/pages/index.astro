@@ -1,25 +1,60 @@
 ---
 import Link from "@components/Link.astro";
 import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 import IconSend from "~icons/tabler/send";
 import IconDownload from "~icons/tabler/download";
+import IconArrowUpRight from "~icons/tabler/arrow-up-right";
+
+const [featuredProject] = await getCollection("projects", ({ data }) => data.featured);
 ---
 
 <Layout title="Raimund - Web Developer and UX/UI Designer">
 	<div slot="header">
-		<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold !leading-snug">
+		<h1 class="text-3xl font-bold !leading-snug sm:text-4xl md:text-5xl">
 			Hey, I'm <span class="whitespace-nowrap"><span class="text-cyan-500">Raimund</span> :)</span>
 			<br />
 			<span class="whitespace-nowrap text-cyan-500">Web Developer</span> and <span
 				class="whitespace-nowrap text-cyan-500">UX/UI Designer</span
 			>
 			<br />
-			<span class="mt-1 sm:mt-2 block text-lg md:text-xl font-normal">with a background in Scientific Research.</span>
+			<span class="mt-1 block text-lg font-normal sm:mt-2 md:text-xl"
+				>with a background in Scientific Research.</span
+			>
 		</h1>
-		<div class="mt-4 md:mt-8 flex flex-wrap gap-4 md:gap-5">
+		<div class="mt-4 flex flex-wrap gap-4 md:mt-8 md:gap-5">
 			<Link href="" class=""><IconDownload /> Full Resume</Link>
 			<Link href="#contact" class=""><IconSend /> Contact me</Link>
 		</div>
+	</div>
+	<div slot="content">
+		<section class="relative isolate mt-8 flex flex-col items-center gap-5 drop-shadow md:flex-row">
+			<h2
+				class="absolute bottom-[calc(100%-1rem)] left-0 z-10 w-max rounded-full border-2 border-black bg-lime-400 px-6 py-3 text-xl font-bold leading-none"
+			>
+				Featured Project
+			</h2>
+			<div class="relative z-0 rounded-2xl border-2 border-black bg-white p-6">
+				<div class="flex flex-col gap-4 md:flex-row md:gap-6">
+					<Image
+						transition:name={`project-img-${featuredProject.slug}`}
+						src={featuredProject.data.image}
+						alt={featuredProject.data.imageAlt}
+						class="rounded-lg object-cover md:h-56"
+					/>
+					<div class="space-y-2 md:space-y-3">
+						<h3 transition:name={`project-headline-${featuredProject.slug}`} class="text-2xl font-bold md:text-3xl">{featuredProject.data.titleShort}</h3>
+						<p class="line-clamp-6">{featuredProject.data.description}</p>
+						<a
+							href={`/projects/${featuredProject.slug}`}
+							class="inline-block whitespace-nowrap font-medium underline"
+							>Read more<IconArrowUpRight class="inline size-5" /></a
+						>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 </Layout>

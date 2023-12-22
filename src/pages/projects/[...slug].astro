@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -16,21 +17,9 @@ const { Content } = await project.render();
 
 <Layout title={`${project.data.titleShort} - Raimund`}>
 	<div slot="header" class="prose">
-		<h1>{project.data.title}</h1>
-		<img src={project.data.image.src} alt={project.data.image.alt} />
+		<h1 transition:name={`project-headline-${project.slug}`}>{project.data.title}</h1>
+		<Image transition:name={`project-img-${project.slug}`} src={project.data.image} alt={project.data.imageAlt} />
 		<Content />
-		<span class="block text-sm font-bold uppercase">Last updated</span>
-		<time
-			>{
-				project.data.lastUpdate.toLocaleString("en-US", {
-					year: "numeric",
-					month: "long",
-					day: "numeric",
-					hour: "numeric",
-					minute: "2-digit",
-				})
-			}</time
-		>
 		<footer>
 			<span class="block text-sm font-bold uppercase">Last updated</span>
 			<time datetime={project.data.lastUpdate.toISOString()} class="block text-base"
@@ -46,3 +35,9 @@ const { Content } = await project.render();
 		</footer>
 	</div>
 </Layout>
+
+<style is:global>
+	.prose img {
+		@apply rounded-xl;
+	}
+</style>

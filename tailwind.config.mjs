@@ -14,6 +14,7 @@ export default {
 			black: "#0A0A0A",
 			white: colors.white,
 			cyan: colors.cyan,
+			lime: colors.lime,
 		},
 		dropShadow: { DEFAULT: "6px 6px 0 rgb(0 0 0 / 0.25)" },
 		extend: {
