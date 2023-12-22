@@ -21,6 +21,7 @@
 		"prettier": "^3.1.1",
 		"prettier-plugin-astro": "^0.12.2",
 		"prettier-plugin-tailwindcss": "^0.5.9",
-		"unplugin-icons": "^0.18.1"
+		"unplugin-icons": "^0.18.1",
+		"zod": "^3.22.4"
 	}
 }
