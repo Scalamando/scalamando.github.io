@@ -16,6 +16,13 @@ export default defineConfig({
 		plugins: [
 			Icons({
 				compiler: "astro",
+				scale: 1.25,
+				iconCustomizer(collection, _icon, props) {
+					if (collection === "tabler") {
+						props.width = "24px";
+						props.height = "24px";
+					}
+				},
 			}),
 		],
 	},
