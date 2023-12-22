@@ -31,5 +31,18 @@ const { Content } = await project.render();
 				})
 			}</time
 		>
+		<footer>
+			<span class="block text-sm font-bold uppercase">Last updated</span>
+			<time datetime={project.data.lastUpdate.toISOString()} class="block text-base"
+				>{
+					project.data.lastUpdate.toLocaleString("en-US", {
+						year: "numeric",
+						month: "long",
+						day: "numeric",
+						hour: "numeric",
+						minute: "2-digit",
+					})
+				}</time>
+		</footer>
 	</div>
 </Layout>
