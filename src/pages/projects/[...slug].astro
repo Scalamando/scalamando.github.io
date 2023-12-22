@@ -17,7 +17,7 @@ const { Content } = await project.render();
 
 <Layout title={`${project.data.titleShort} - Raimund`}>
 	<div slot="header" class="prose-sm md:prose">
-		<h1 transition:name={`project-headline-${project.slug}`}>{project.data.title}</h1>
+		<h1>{project.data.title}</h1>
 		<Image
 			transition:name={`project-img-${project.slug}`}
 			src={project.data.image}
