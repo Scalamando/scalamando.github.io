@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions"
+import { ViewTransitions } from "astro:transitions";
 import TabGroup from "@components/TabGroup.astro";
 import Tab from "@components/Tab.astro";
 import Link from "@components/Link.astro";
@@ -54,7 +54,9 @@ const { title } = Astro.props;
 						</Tab>
 					</TabGroup>
 				</nav>
-				<div class="glow-rainbow w-full rounded-2xl border-2 border-black bg-white px-6 pb-6 pt-5 sm:px-8 sm:pt-7 sm:pb-8 md:px-14 md:pb-[3.25rem] md:pt-12">
+				<div
+					class="glow-rainbow w-full rounded-2xl border-2 border-black bg-white px-6 pb-6 pt-5 sm:px-8 sm:pb-8 sm:pt-7 md:px-14 md:pb-[3.25rem] md:pt-12"
+				>
 					<slot name="header" />
 				</div>
 			</section>
@@ -132,50 +134,50 @@ const { title } = Astro.props;
 				</section>
 			</footer>
 		</div>
+
+		<style>
+			@font-face {
+				font-family: Ranade;
+				src:
+					url("/fonts/Ranade-Variable.woff2") format("woff2"),
+					url("/fonts/Ranade-Variable.woff") format("woff"),
+					url("/fonts/Ranade-Variable.ttf") format("truetype");
+				font-weight: 100 700;
+				font-display: swap;
+			}
+
+			html,
+			body {
+				min-height: 100vh;
+				min-height: 100lvh;
+			}
+
+			/* dotted background pattern */
+			body {
+				background: radial-gradient(#0a0a0a44 1px, transparent 0) -19px -19px/40px 40px;
+			}
+
+			.glow-rainbow::after {
+				content: "";
+				position: absolute;
+				z-index: -20;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				border-radius: 1rem;
+				max-height: max(50vw, 700px);
+				background: conic-gradient(
+					at 50% 50%,
+					#f52c2c 22.5deg,
+					#f79d33 90deg,
+					#49e362 180deg,
+					#2ad2e8 270deg,
+					#be53ff 330deg
+				);
+				filter: blur(100px);
+				opacity: 0.4;
+			}
+		</style>
 	</body>
 </html>
-
-<style>
-	@font-face {
-		font-family: Ranade;
-		src:
-			url("/fonts/Ranade-Variable.woff2") format("woff2"),
-			url("/fonts/Ranade-Variable.woff") format("woff"),
-			url("/fonts/Ranade-Variable.ttf") format("truetype");
-		font-weight: 100 700;
-		font-display: swap;
-	}
-
-	html,
-	body {
-		min-height: 100vh;
-		min-height: 100lvh;
-	}
-
-	/* dotted background pattern */
-	body {
-		background: radial-gradient(#0a0a0a44 1px, transparent 0) -19px -19px/40px 40px;
-	}
-
-	.glow-rainbow::after {
-		content: "";
-		position: absolute;
-		z-index: -20;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		border-radius: 1rem;
-		max-height: max(50vw, 700px);
-		background: conic-gradient(
-			at 50% 50%,
-			#f52c2c 22.5deg,
-			#f79d33 90deg,
-			#49e362 180deg,
-			#2ad2e8 270deg,
-			#be53ff 330deg
-		);
-		filter: blur(100px);
-		opacity: 0.4;
-	}
-</style>
