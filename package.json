@@ -1,44 +1,29 @@
 {
 	"name": "scalamando.github.io",
-	"version": "1.0.0",
-	"description": "",
-	"source": "src/index.html",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Scalamando/scalamando.github.io.git"
-	},
+	"type": "module",
+	"version": "0.0.1",
 	"scripts": {
-		"subset-fonts": "glyphhanger ./index.html --subset=\"./assets/fonts/SpaceGrotesk.woff2\" --formats=woff2,woff",
-		"dev": "rimraf dist && parcel",
-        "slides": "node ./scripts/dev-slides.js",
-		"build": "rimraf dist && parcel build && pnpm -F @slides/* build && node ./scripts/generate-slides.js"
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
 	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Scalamando/scalamando.github.io/issues"
+	"dependencies": {
+		"@astrojs/check": "^0.3.3",
+		"@astrojs/tailwind": "^5.0.4",
+		"astro": "^4.0.7",
+		"tailwindcss": "^3.4.0",
+		"typescript": "^5.3.3"
 	},
-	"homepage": "https://github.com/Scalamando/scalamando.github.io#readme",
 	"devDependencies": {
-		"@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-rc.3-27550969.a4a3cff",
-		"@parcel/config-default": "^2.6.0",
-		"@parcel/core": "^2.6.0",
-		"@parcel/optimizer-data-url": "^2.6.0",
-		"@parcel/transformer-inline-string": "^2.6.0",
-		"@slidev/cli": "^0.32.3",
-		"@slidev/theme-default": "^0.21.2",
-		"@slidev/theme-seriph": "^0.21.2",
-		"fast-glob": "^3.2.11",
-		"fs-extra": "^10.1.0",
-		"glyphhanger": "^5.0.0",
-		"parcel": "^2.6.0",
-		"parcel-transformer-meta-image": "^1.0.4",
-		"rimraf": "^3.0.2"
-	},
-	"browserslist": "> 0.5%, last 2 versions, not dead",
-	"@parcel/transformer-css": {
-		"drafts": {
-			"nesting": true
-		}
+		"@iconify-json/tabler": "^1.1.102",
+		"@tailwindcss/typography": "^0.5.10",
+		"prettier": "^3.1.1",
+		"prettier-plugin-astro": "^0.12.2",
+		"prettier-plugin-tailwindcss": "^0.5.9",
+		"sharp": "^0.33.1",
+		"unplugin-icons": "^0.18.1",
+		"zod": "^3.22.4"
 	}
 }

@@ -1,0 +1,184 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import TabGroup from "@components/TabGroup.astro";
+import Tab from "@components/Tab.astro";
+import Link from "@components/Link.astro";
+import Button from "@components/Button.astro";
+import IconHome from "~icons/tabler/home";
+import IconFolders from "~icons/tabler/folders";
+import IconBriefcase from "~icons/tabler/briefcase";
+import IconSchool from "~icons/tabler/school";
+import IconGitHub from "~icons/tabler/brand-github";
+import IconLinkedIn from "~icons/tabler/brand-linkedin";
+import IconMail from "~icons/tabler/mail";
+import IconDiscord from "~icons/tabler/brand-discord";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Raimund - Web Developer and UX/UI Designer" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions fallback="swap" />
+	</head>
+	<body class="flex p-2 md:p-4">
+		<div class="mx-auto flex w-full max-w-[1024px] flex-col gap-10">
+			<section transition:animate="none" class="relative isolate mt-16 drop-shadow">
+				<nav class="absolute bottom-[calc(100%-2rem)] left-0 -z-10">
+					<TabGroup>
+						<Tab route="/">
+							<IconHome slot="icon" class="size-6" />
+							 Home
+						</Tab>
+						<Tab route="/projects">
+							<IconFolders class="size-6" slot="icon" />
+							 Projects
+						</Tab>
+						<Tab route="/experience">
+							<IconBriefcase class="size-6" slot="icon" />
+							 Experience
+						</Tab>
+						<Tab route="/education">
+							<IconSchool class="size-6" slot="icon" />
+							 Education
+						</Tab>
+					</TabGroup>
+				</nav>
+				<div
+					class="glow-rainbow w-full rounded-2xl border-2 border-black bg-white px-6 pb-6 pt-5 sm:px-8 sm:pb-8 sm:pt-7 md:px-14 md:pb-[3.25rem] md:pt-12"
+				>
+					<slot name="header" />
+				</div>
+			</section>
+			<slot name="content" />
+			<footer class="mt-auto" id="contact" transition:name="contact">
+				<section class="relative isolate mt-8 flex flex-col items-center gap-5 md:flex-row">
+					<div class="drop-shadow">
+						<h3
+							class="absolute bottom-[calc(100%-1rem)] left-0 z-10 w-max rounded-full border-2 border-black bg-cyan-400 px-6 py-3 text-xl font-bold leading-none"
+						>
+							Let's Connect
+						</h3>
+						<div class="relative z-0 rounded-2xl border-2 border-black bg-white px-6 py-7">
+							Whether you're a fellow enthusiast, a potential collaborator, or someone just
+							passionate about web development and design, I'd love to hear from you. Feel free to
+							reach out through the channels <span class="hidden md:inline">on the right</span><span
+								class="md:hidden">below</span
+							>, and let's start a conversation!
+						</div>
+					</div>
+					<div class="flex flex-wrap justify-center gap-4 md:flex-col">
+						<div class="flex gap-4">
+							<Link
+								href="https://github.com/Scalamando"
+								external
+								class="!bg-brand-github text-white"
+							>
+								<IconGitHub /> GitHub
+							</Link>
+							<Link
+								href="https://www.linkedin.com/in/raimund-canzler/"
+								external
+								class="!bg-brand-linkedin text-white"
+							>
+								<IconLinkedIn /> LinkedIn
+							</Link>
+						</div>
+						<div class="flex gap-4">
+							<Link href="mailto:raimund@canzler.email" class="bg-white text-black">
+								<IconMail /> Mail
+							</Link>
+							<Button
+								onclick="navigator.clipboard.writeText('scalamando')"
+								class="!bg-brand-discord text-white"
+							>
+								<IconDiscord /> Discord
+							</Button>
+						</div>
+					</div>
+				</section>
+				<section class="mt-12 flex flex-col items-center justify-between gap-2 md:flex-row">
+					<span class="order-3 md:order-none">
+						&copy; Raimund Canzler {new Date().toLocaleDateString("en-US", { year: "numeric" })}
+					</span>
+					<ul class="flex gap-2">
+						<li><a href="/imprint" class="font-medium underline">Imprint</a></li>
+						<li><a href="/gdpr" class="font-medium underline">GDPR</a></li>
+						<li>
+							<a
+								href="https://github.com/Scalamando/scalamando.github.io"
+								class="font-medium underline"
+								><IconGitHub class="inline -translate-y-px align-middle" />Source</a
+							>
+						</li>
+					</ul>
+					<span>
+						Last updated: {
+							new Date().toLocaleDateString("en-US", {
+								year: "numeric",
+								month: "short",
+								day: "numeric",
+							})
+						}
+					</span>
+				</section>
+			</footer>
+		</div>
+
+		<style>
+			@font-face {
+				font-family: Ranade;
+				src:
+					url("/fonts/Ranade-Variable.woff2") format("woff2"),
+					url("/fonts/Ranade-Variable.woff") format("woff"),
+					url("/fonts/Ranade-Variable.ttf") format("truetype");
+				font-weight: 100 700;
+				font-display: swap;
+			}
+
+			html,
+			body {
+				min-height: 100vh;
+				min-height: 100lvh;
+			}
+
+			/* dotted background pattern */
+			body {
+				background: radial-gradient(#0a0a0a44 1px, transparent 0) -19px -19px/40px 40px;
+				overflow-y: scroll;
+			}
+
+			.glow-rainbow::after {
+				content: "";
+				position: absolute;
+				z-index: -20;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				border-radius: 1rem;
+				max-height: max(50vw, 700px);
+				background: conic-gradient(
+					at 50% 50%,
+					#f52c2c 22.5deg,
+					#f79d33 90deg,
+					#49e362 180deg,
+					#2ad2e8 270deg,
+					#be53ff 330deg
+				);
+				filter: blur(100px);
+				opacity: 0.4;
+			}
+		</style>
+	</body>
+</html>

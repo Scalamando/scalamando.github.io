@@ -1,9 +1,0 @@
-{
-	"extends": "@parcel/config-default",
-	"transformers": {
-		"*.html": [
-			"@parcel/transformer-html",
-			"parcel-transformer-meta-image"
-		]
-	}
-}
