@@ -19,10 +19,10 @@ experiences.sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
 		<section class="mt-12 space-y-8">
 			{
 				experiences.map((exp, index) => (
-					<div class="flex gap-6">
-						<div class="relative mt-2">
+					<div class="flex gap-6 group">
+						<div class="relative mt-2 group-first:!mt-0">
 							{index === 0 ? (
-								<IconMapPin class="-mt-2"/>
+								<IconMapPin />
 							) : (
 								<span class="flex size-6 items-center justify-center">
 									<span class="relative size-1.5 rounded-full bg-black">
