@@ -30,8 +30,9 @@ const educationCollection = defineCollection({
 const experienceCollection = defineCollection({
 	type: "data",
 	schema: z.object({
+		type: z.string(),
 		company: z.string(),
-		title: z.string(),
+		position: z.string(),
 		description: z.array(z.string()),
 		start: z.date(),
 		end: z.date().optional(),
