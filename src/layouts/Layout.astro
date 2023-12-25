@@ -4,6 +4,7 @@ import TabGroup from "@components/TabGroup.astro";
 import Tab from "@components/Tab.astro";
 import Link from "@components/Link.astro";
 import Button from "@components/Button.astro";
+import Tooltip from "@components/Tooltip.astro";
 import IconHome from "~icons/tabler/home";
 import IconFolders from "~icons/tabler/folders";
 import IconBriefcase from "~icons/tabler/briefcase";
@@ -98,12 +99,14 @@ const { title } = Astro.props;
 							<Link href="mailto:raimund@canzler.email" class="bg-white text-black">
 								<IconMail /> Mail
 							</Link>
-							<Button
-								onclick="navigator.clipboard.writeText('scalamando')"
-								class="!bg-brand-discord text-white"
-							>
-								<IconDiscord /> Discord
-							</Button>
+							<Tooltip content="Username copied!">
+								<Button
+									onclick="navigator.clipboard.writeText('scalamando')"
+									class="!bg-brand-discord text-white"
+								>
+									<IconDiscord /> Discord
+								</Button>
+							</Tooltip>
 						</div>
 					</div>
 				</section>

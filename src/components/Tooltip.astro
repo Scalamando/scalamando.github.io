@@ -1,0 +1,84 @@
+---
+interface Props {
+	content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<astro-tooltip class="relative">
+	<slot />
+	<div
+		class="astro-tooltip-content absolute left-0 top-0 w-max rounded-md border-2 border-black bg-white px-2 py-1 drop-shadow transition-opacity"
+		style="display: none; opacity: 0"
+	>
+		{content}
+		<span
+			class="astro-tooltip-arrow absolute left-0 top-full h-0 w-0 border-x-8 border-t-8 border-x-transparent border-t-black"
+		></span>
+	</div>
+</astro-tooltip>
+
+<script>
+	import { autoUpdate, computePosition, arrow, offset } from "@floating-ui/dom";
+
+	class AstroTooltip extends HTMLElement {
+		trigger: HTMLElement | null = null;
+		content: HTMLElement;
+		arrow: HTMLElement;
+
+		timeout: number | null = null;
+
+		constructor() {
+			super();
+			this.trigger = this.querySelector(":first-child");
+			this.content = this.querySelector(".astro-tooltip-content")!;
+			this.arrow = this.querySelector(".astro-tooltip-arrow")!;
+
+			if (!this.trigger) return;
+
+			this.trigger.addEventListener("click", () => this.openTooltip());
+		}
+
+		openTooltip() {
+			const cleanup = autoUpdate(this.trigger!, this.content, async () => {
+				const { x, y, middlewareData } = await computePosition(this.trigger!, this.content!, {
+					middleware: [arrow({ element: this.arrow }), offset(6)],
+					placement: "top",
+				});
+
+				Object.assign(this.content.style, {
+					left: `${x}px`,
+					top: `${y}px`,
+				});
+
+				if (middlewareData.arrow) {
+					const { x: arrowX } = middlewareData.arrow;
+					Object.assign(this.arrow.style, {
+						left: x != null ? `${arrowX}px` : "",
+					});
+				}
+			});
+
+			this.content.style.display = "block";
+			getComputedStyle(this.content).opacity; // force style computation for transition
+			this.content.style.opacity = "1";
+
+			if (this.timeout != null) clearTimeout(this.timeout);
+			this.timeout = setTimeout(() => {
+				cleanup();
+
+				this.content!.style.opacity = "0";
+				this.content!.addEventListener(
+					"transitionend",
+					() => {
+						this.content!.style.display = "none";
+					},
+					{ once: true },
+				);
+			}, 2000);
+		}
+	}
+
+	customElements.define("astro-tooltip", AstroTooltip);
+</script>

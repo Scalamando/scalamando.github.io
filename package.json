@@ -17,6 +17,7 @@
 		"typescript": "^5.3.3"
 	},
 	"devDependencies": {
+		"@floating-ui/dom": "^1.5.3",
 		"@iconify-json/tabler": "^1.1.102",
 		"@tailwindcss/typography": "^0.5.10",
 		"prettier": "^3.1.1",
