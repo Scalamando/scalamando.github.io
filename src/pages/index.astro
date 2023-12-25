@@ -25,8 +25,8 @@ const [featuredProject] = await getCollection("projects", ({ data }) => data.fea
 			>
 		</h1>
 		<div class="mt-4 flex flex-wrap gap-4 md:mt-8 md:gap-5">
-			<Link href="" class=""><IconDownload /> Full Resume</Link>
-			<Link href="#contact" class=""><IconSend /> Contact me</Link>
+			<Link href="" class="hero-hover"><IconDownload /> Full Resume</Link>
+			<Link href="#contact" class="hero-hover"><IconSend /> Contact me</Link>
 		</div>
 	</div>
 	<div slot="content">
@@ -58,3 +58,38 @@ const [featuredProject] = await getCollection("projects", ({ data }) => data.fea
 		</section>
 	</div>
 </Layout>
+
+<style>
+	.hero-hover {
+		--scale: 0;
+		--size: 210%;
+		--duration: 0.3s;
+		position: relative;
+		overflow: hidden;
+		transition: color var(--duration) ease;
+	}
+
+	.hero-hover:hover,
+	.hero-hover:focus-visible {
+		color: theme("colors.white") !important;
+	}
+
+	.hero-hover::after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+		left: 0;
+		width: var(--size);
+		padding-bottom: var(--size);
+		border-radius: 9999px;
+		background: theme("colors.black");
+		transform: translate(-50%, 50%) scale(var(--scale));
+		transition: transform var(--duration) ease;
+	}
+
+	.hero-hover:hover::after,
+	.hero-hover:focus-visible::after {
+		--scale: 1;
+	}
+</style>
