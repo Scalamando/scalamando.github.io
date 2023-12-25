@@ -9,7 +9,7 @@ const { content } = Astro.props;
 <astro-tooltip class="relative">
 	<slot />
 	<div
-		class="astro-tooltip-content absolute left-0 top-0 w-max rounded-md border-2 border-black bg-white px-2 py-1 drop-shadow transition-opacity"
+		class="astro-tooltip-content absolute left-0 top-0 w-max rounded-full border-2 border-black bg-white px-3 py-1.5 drop-shadow transition-opacity"
 		style="display: none; opacity: 0"
 	>
 		{content}
