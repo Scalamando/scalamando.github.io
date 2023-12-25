@@ -1,5 +1,5 @@
 import colors from "tailwindcss/colors";
-import typographyPlugin from "@tailwindcss/typography"
+import typographyPlugin from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -17,7 +17,11 @@ export default {
 			cyan: colors.cyan,
 			lime: colors.lime,
 		},
-		dropShadow: { DEFAULT: "6px 6px 0 rgb(0 0 0 / 0.25)", "lifted": "8px 8px 0 rgb(0 0 0 / 0.25)" },
+		dropShadow: {
+			none: "0 0 0 rgb(0 0 0 / 0)",
+			DEFAULT: "6px 6px 0 rgb(0 0 0 / 0.25)",
+			lifted: "8px 8px 0 rgb(0 0 0 / 0.25)",
+		},
 		extend: {
 			colors: {
 				"brand-discord": "#5865F2",
