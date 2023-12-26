@@ -1,7 +1,7 @@
 import colors from "tailwindcss/colors";
 import typographyPlugin from "@tailwindcss/typography";
+import type { Config } from "tailwindcss";
 
-/** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
@@ -31,4 +31,4 @@ export default {
 		},
 	},
 	plugins: [typographyPlugin],
-};
+} satisfies Config;

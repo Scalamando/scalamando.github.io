@@ -5,9 +5,15 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind()],
-	site: 'https://rai-canzler.de',
+	integrations: [tailwind({ configFile: "tailwind.config.ts" })],
+	site: "https://rai-canzler.de",
 	vite: {
+		ssr: {
+			external: ["@resvg/resvg-js"],
+		},
+		optimizeDeps: {
+			exclude: ["@resvg/resvg-js"],
+		},
 		plugins: [
 			Icons({
 				compiler: "astro",
