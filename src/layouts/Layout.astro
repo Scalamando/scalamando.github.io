@@ -27,7 +27,17 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Raimund - Web Developer and UX/UI Designer" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20231226" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20231226" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20231226" />
+		<link rel="manifest" href="/site.webmanifest?v=20231226" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg?v=20231226" color="#08b4da" />
+		<link rel="shortcut icon" href="/favicon.ico?v=20231226" />
+		<meta name="msapplication-TileColor" content="#224679" />
+		<meta name="theme-color" content="#ffffff" />
+
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ViewTransitions fallback="swap" />
@@ -83,14 +93,14 @@ const { title } = Astro.props;
 							<Link
 								href="https://github.com/Scalamando"
 								external
-								class="active:drop-shadow-none !bg-brand-github text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1"
+								class="!bg-brand-github text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 							>
 								<IconGitHub /> GitHub
 							</Link>
 							<Link
 								href="https://www.linkedin.com/in/raimund-canzler/"
 								external
-								class="active:drop-shadow-none !bg-brand-linkedin text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1"
+								class="!bg-brand-linkedin text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 							>
 								<IconLinkedIn /> LinkedIn
 							</Link>
@@ -98,14 +108,14 @@ const { title } = Astro.props;
 						<div class="flex gap-4">
 							<Link
 								href="mailto:raimund@canzler.email"
-								class="active:drop-shadow-none bg-white text-black transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1"
+								class="bg-white text-black transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 							>
 								<IconMail /> Mail
 							</Link>
 							<Tooltip content="Username copied!">
 								<Button
 									onclick="navigator.clipboard.writeText('scalamando')"
-									class="active:drop-shadow-none !bg-brand-discord text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1"
+									class="!bg-brand-discord text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 								>
 									<IconDiscord /> Discord
 								</Button>
