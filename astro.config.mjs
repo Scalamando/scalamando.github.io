@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import fs from "node:fs";
 
 import Icons from "unplugin-icons/vite";
 import tailwind from "@astrojs/tailwind";
@@ -25,6 +26,17 @@ export default defineConfig({
 					}
 				},
 			}),
+			{
+				name: 'woff-loader',
+				transform(code, id) {
+					if(!id.match(/.woff$/)) {
+						return null;
+					}
+
+					const data = fs.readFileSync(id);
+					return `export default new Uint8Array([${[...data.values()]}]);`;
+				}
+			}
 		],
 	},
 });

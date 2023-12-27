@@ -1,10 +1,10 @@
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-import fs from "node:fs/promises";
-import twConfig from "../../tailwind.config.ts";
+import twConfig from "../../tailwind.config.js";
+import ranadeFont from "@assets/Ranade-Variable.woff"
 
 export class PNGResponse extends Response {
-	constructor(image: Buffer) {
+	constructor(image: ArrayBuffer) {
 		super(image, {
 			headers: {
 				"Content-Type": "image/png",
@@ -27,9 +27,6 @@ export async function createImage(
 	markup: Parameters<typeof satori>[0],
 	opts?: { width?: number; height?: number },
 ) {
-	const fontUrl = new URL("../../public/fonts/Ranade-Variable.woff", import.meta.url);
-	const ranadeFont = await fs.readFile(fontUrl);
-
 	const svg = await satori(markup, {
 		width: 1200,
 		height: 768,
