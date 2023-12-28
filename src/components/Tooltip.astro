@@ -65,7 +65,7 @@ const { content } = Astro.props;
 			this.content.style.opacity = "1";
 
 			if (this.timeout != null) clearTimeout(this.timeout);
-			this.timeout = setTimeout(() => {
+			this.timeout = window.setTimeout(() => {
 				cleanup();
 
 				this.content!.style.opacity = "0";
