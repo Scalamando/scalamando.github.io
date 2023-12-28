@@ -15,11 +15,18 @@ export interface DefineOgImageHandlerOptions<RouteProps extends Record<string, a
 	height: number;
 	props: RouteProps;
 }
+
+type DefineOgImageHandlerReturn = ReturnType<typeof html>;
+
 export function defineOgImageHandler<RouteProps extends Record<string, any>>(
-	markupFn: (opts: DefineOgImageHandlerOptions<RouteProps>) => ReturnType<typeof html>,
+	markupFn: (
+		opts: DefineOgImageHandlerOptions<RouteProps>,
+	) => DefineOgImageHandlerReturn | Promise<DefineOgImageHandlerReturn>,
 ): APIRoute<RouteProps> {
 	return async (ctx: APIContext<RouteProps>) => {
-		const markup = markupFn({ width: OG_WIDTH, height: OG_HEIGHT, props: ctx.props });
+		const markup = await markupFn({ width: OG_WIDTH, height: OG_HEIGHT, props: ctx.props });
+
+		console.dir(markup, {depth: 15})
 
 		const background = {
 			type: "img",
@@ -31,8 +38,6 @@ export function defineOgImageHandler<RouteProps extends Record<string, any>>(
 		if (Array.isArray(markup.props.children)) {
 			markup.props.children.unshift(background);
 		}
-
-		console.dir(markup, { depth: 10 });
 
 		const image = await createImage(markup, { width: OG_WIDTH, height: OG_HEIGHT });
 		return new PNGResponse(image);
@@ -87,4 +92,10 @@ export function backgroundPattern(width: number, height: number, density: number
 </svg>
 `)
 	);
+}
+
+export function resolveContentImage(src: string) {
+	return import.meta.env.DEV
+		? src.replace("/@fs", "").replace(/\?.*/, "")
+		: new URL("." + src, new URL("../../", import.meta.url));
 }
