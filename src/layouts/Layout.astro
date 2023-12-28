@@ -16,16 +16,24 @@ import IconDiscord from "~icons/tabler/brand-discord";
 
 interface Props {
 	title: string;
+	description?: string;
+	ogimagePath?: string;
 }
 
-const { title } = Astro.props;
-const description = "Raimund - Web Developer and UX/UI Designer";
+const {
+	title,
+	ogimagePath = "/ogimage.png",
+	description = "Raimund - Web Developer and UX/UI Designer",
+} = Astro.props;
+
+const ogimageURL = new URL(ogimagePath, Astro.site!);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 
@@ -44,7 +52,7 @@ const description = "Raimund - Web Developer and UX/UI Designer";
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL("/ogimage-facebook.png", Astro.site!)} />
+		<meta property="og:image" content={ogimageURL} />
 
 		<!-- Twitter Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -52,10 +60,9 @@ const description = "Raimund - Web Developer and UX/UI Designer";
 		<meta property="twitter:url" content={Astro.site} />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={new URL("/ogimage-twitter.png", Astro.site!)} />
+		<meta name="twitter:image" content={ogimageURL} />
 
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 		<ViewTransitions fallback="swap" />
 	</head>
 

@@ -4,7 +4,7 @@ import Layout from "@/layouts/Layout.astro"
 const {frontmatter} = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} description={frontmatter.description}>
 	<div slot="header" class="prose">
 		<slot />
 	</div>
