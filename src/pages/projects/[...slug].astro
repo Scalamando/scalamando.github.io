@@ -15,7 +15,7 @@ const { project } = Astro.props;
 const { Content } = await project.render();
 ---
 
-<Layout title={`${project.data.titleShort} - Raimund`}>
+<Layout title={`${project.data.titleShort} - Raimund`} description={project.data.description} ogimagePath={`/projects/${project.slug}-ogimage.png`}>
 	<div slot="header" class="prose-sm md:prose">
 		<a href="/projects" class="uppercase text-black/80 text-sm md:text-base !no-underline hover:!underline">projects /</a>
 		<h1 class="!mt-1.5">{project.data.title}</h1>
