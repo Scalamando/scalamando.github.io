@@ -28,11 +28,10 @@ export default defineConfig({
 			}),
 			{
 				name: 'woff-loader',
-				transform(code, id) {
+				transform(_code, id) {
 					if(!id.match(/.woff$/)) {
 						return null;
 					}
-
 					const data = fs.readFileSync(id);
 					return `export default new Uint8Array([${[...data.values()]}]);`;
 				}
