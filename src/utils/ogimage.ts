@@ -26,8 +26,6 @@ export function defineOgImageHandler<RouteProps extends Record<string, any>>(
 	return async (ctx: APIContext<RouteProps>) => {
 		const markup = await markupFn({ width: OG_WIDTH, height: OG_HEIGHT, props: ctx.props });
 
-		console.dir(markup, {depth: 15})
-
 		const background = {
 			type: "img",
 			props: {
