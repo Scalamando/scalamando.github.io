@@ -6,6 +6,7 @@ import ranadeMediumFont from "@/assets/Ranade-Medium.woff";
 import ranadeBoldFont from "@/assets/Ranade-Bold.woff";
 import { html } from "satori-html";
 import type { APIContext, APIRoute } from "astro";
+import path from "node:path";
 
 const OG_WIDTH = 2400;
 const OG_HEIGHT = 1260;
@@ -93,7 +94,10 @@ export function backgroundPattern(width: number, height: number, density: number
 }
 
 export function resolveContentImage(src: string) {
-	return import.meta.env.DEV
-		? src.replace("/@fs", "").replace(/\?.*/, "")
-		: new URL("." + src, new URL("../../", import.meta.url));
+	if (import.meta.env.DEV) {
+		return src.replace("/@fs", "").replace(/\?.*/, "");
+	}
+
+	const distDir = path.join(process.cwd(), "./dist");
+	return path.join(distDir, "." + src);
 }
