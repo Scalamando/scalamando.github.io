@@ -1,6 +1,6 @@
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-import twConfig from "../../tailwind.config.js";
+import twConfig from "../../tailwind.config";
 import ranadeFont from "@assets/Ranade-Variable.woff"
 
 export class PNGResponse extends Response {
