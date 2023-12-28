@@ -3,13 +3,10 @@
 	"include": ["src/**/*", "src/**/*.astro", "tailwind.config.ts"],
 	"compilerOptions": {
 		"composite": true,
+		"types": [],
 		"baseUrl": ".",
 		"paths": {
-			"@components/*": ["./src/components/*"],
-			"@layouts/*": ["./src/layouts/*"],
-			"@assets/*": ["./src/assets/*"],
-			"@utils/*": ["./src/utils/*"]
+			"@/*": ["src/*"]
 		},
-		"types": []
 	}
 }
