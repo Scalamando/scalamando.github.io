@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<'a'> {
+interface Props extends HTMLAttributes<"a"> {
 	href: string;
 	external?: boolean;
 }
@@ -12,7 +12,7 @@ const { external = false, class: className, ...attrs } = Astro.props;
 <a
 	target={external ? "_blank" : undefined}
 	class:list={[
-		"drop-shadow flex items-center gap-2 rounded-xl border-2 text-lg border-black bg-white px-6 py-3.5",
+		"flex items-center gap-2 rounded-xl border-2 border-black bg-white px-6 py-3.5 text-lg drop-shadow",
 		className,
 	]}
 	{...attrs}

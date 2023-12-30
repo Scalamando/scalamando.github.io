@@ -19,7 +19,7 @@ projects.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 	<main slot="content" class="-mt-8 grid gap-2 sm:grid-cols-2 md:-mt-5 md:gap-5 lg:grid-cols-3">
 		{
 			projects.map((project) => (
-				<div class="hover:drop-shadow-lifted drop-shadow transition">
+				<div class="drop-shadow transition hover:drop-shadow-lifted">
 					<article class="group rounded-2xl border-2 border-black bg-white transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:-rotate-1 hover:scale-[103%]">
 						<a href={`/projects/${project.slug}`} class="block p-4">
 							<Image

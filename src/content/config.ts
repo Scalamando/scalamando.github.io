@@ -2,18 +2,19 @@ import { z, defineCollection } from "astro:content";
 
 const projectCollection = defineCollection({
 	type: "content",
-	schema: ({image}) => z.object({
-		title: z.string(),
-		titleShort: z.string(),
-		description: z.string(),
-		image: image().refine(img => img.width / img.height === 4/3, {
-			message: "Image must have an aspect ration of 4/3!"
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			titleShort: z.string(),
+			description: z.string(),
+			image: image().refine((img) => img.width / img.height === 4 / 3, {
+				message: "Image must have an aspect ration of 4/3!",
+			}),
+			imageAlt: z.string(),
+			lastUpdate: z.date(),
+			sortOrder: z.number(),
+			featured: z.boolean().default(false),
 		}),
-		imageAlt: z.string(),
-		lastUpdate: z.date(),
-		sortOrder: z.number(),
-		featured: z.boolean().default(false),
-	}),
 });
 
 const educationCollection = defineCollection({
