@@ -12,8 +12,8 @@ export default defineConfig({
 		tailwind({
 			configFile: "tailwind.config.ts",
 		}),
-		compress(),
 		react(),
+		compress(),
 	],
 	site: "https://rai-canzler.de",
 	vite: {
