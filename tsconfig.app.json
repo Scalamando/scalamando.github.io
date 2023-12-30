@@ -3,10 +3,16 @@
 	"include": ["src/**/*", "src/**/*.astro", "tailwind.config.ts"],
 	"compilerOptions": {
 		"composite": true,
+
+		/* React */
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
+
 		"types": [],
+
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["src/*"]
-		},
+		}
 	}
 }
