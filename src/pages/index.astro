@@ -9,6 +9,9 @@ import IconDownload from "~icons/tabler/download";
 import IconArrowUpRight from "~icons/tabler/arrow-up-right";
 
 const [featuredProject] = await getCollection("projects", ({ data }) => data.featured);
+if(!featuredProject) {
+	throw new Error('No featured project found. One project needs to be marked as \'featured\'');
+}
 ---
 
 <Layout title="Raimund - Web Developer and UX/UI Designer">
@@ -25,7 +28,7 @@ const [featuredProject] = await getCollection("projects", ({ data }) => data.fea
 			>
 		</h1>
 		<div class="mt-4 flex flex-wrap gap-4 md:mt-8 md:gap-5">
-			<Link href="" class="hero-hover"><IconDownload /> Full Resume</Link>
+			<Link href="/resume.pdf" class="hero-hover"><IconDownload /> Full Resume</Link>
 			<Link href="#contact" class="hero-hover"><IconSend /> Contact me</Link>
 		</div>
 	</div>
