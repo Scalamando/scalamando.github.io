@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 		lineHeight: 1.6,
 		color: colors.slate[500],
 		flexDirection: "row",
-		gap: 28,
+		gap: 40,
 		paddingHorizontal: 36,
 		paddingVertical: 40,
 	},
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
 	experienceItem: {},
 	experienceItemHeading: {
 		fontSize: 10,
+		color: colors.slate[600],
 	},
 	experienceCompany: {
 		color: colors.slate[800],
@@ -86,7 +87,8 @@ const styles = StyleSheet.create({
 
 	/* Aside */
 	aside: {
-		width: 290,
+		width: 170,
+		minWidth: 170,
 		gap: 24,
 	},
 	asideHeading: {
