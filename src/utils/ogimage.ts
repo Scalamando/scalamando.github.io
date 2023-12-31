@@ -1,31 +1,41 @@
-import { Resvg } from "@resvg/resvg-js";
-import satori from "satori";
-import twConfig from "../../tailwind.config";
-import ranadeRegularFont from "@/assets/Ranade-Regular.woff";
-import ranadeMediumFont from "@/assets/Ranade-Medium.woff";
 import ranadeBoldFont from "@/assets/Ranade-Bold.woff";
-import { html } from "satori-html";
+import ranadeMediumFont from "@/assets/Ranade-Medium.woff";
+import ranadeRegularFont from "@/assets/Ranade-Regular.woff";
+import { Resvg } from "@resvg/resvg-js";
 import type { APIContext, APIRoute } from "astro";
+import type { z } from "astro/zod";
+import type { ImageFunction } from "astro:content";
+import fs from "node:fs";
 import path from "node:path";
+import type { ReactNode } from "react";
+import satori from "satori";
+import { html } from "satori-html";
+import twConfig from "../../tailwind.config";
 
 const OG_WIDTH = 2400;
 const OG_HEIGHT = 1260;
 
+type VNode = ReturnType<typeof html>;
+
 export interface DefineOgImageHandlerOptions<RouteProps extends Record<string, any>> {
 	width: number;
 	height: number;
+	html: typeof html;
+	image: typeof image;
 	props: RouteProps;
 }
 
-type DefineOgImageHandlerReturn = ReturnType<typeof html>;
-
 export function defineOgImageHandler<RouteProps extends Record<string, any>>(
-	markupFn: (
-		opts: DefineOgImageHandlerOptions<RouteProps>,
-	) => DefineOgImageHandlerReturn | Promise<DefineOgImageHandlerReturn>,
+	markupFn: (opts: DefineOgImageHandlerOptions<RouteProps>) => VNode | Promise<VNode>,
 ): APIRoute<RouteProps> {
 	return async (ctx: APIContext<RouteProps>) => {
-		const markup = await markupFn({ width: OG_WIDTH, height: OG_HEIGHT, props: ctx.props });
+		const markup = await markupFn({
+			width: OG_WIDTH,
+			height: OG_HEIGHT,
+			html,
+			image,
+			props: ctx.props,
+		});
 
 		const background = {
 			type: "img",
@@ -34,29 +44,37 @@ export function defineOgImageHandler<RouteProps extends Record<string, any>>(
 				tw: "absolute w-full h-full bg-white",
 			},
 		};
+
 		if (Array.isArray(markup.props.children)) {
 			markup.props.children.unshift(background);
 		}
 
-		const image = await createImage(markup, { width: OG_WIDTH, height: OG_HEIGHT });
-		return new PNGResponse(image);
+		const ogimage = await createImage(markup as ReactNode, { width: OG_WIDTH, height: OG_HEIGHT });
+		return new PNGResponse(ogimage);
 	};
 }
 
-export class PNGResponse extends Response {
-	constructor(image: ArrayBuffer) {
-		super(image, {
-			headers: {
-				"Content-Type": "image/png",
-			},
-		});
-	}
+
+type ContentImage = z.infer<ReturnType<ImageFunction>>;
+
+function image(img: string | ContentImage) {
+	const resolvedPath = typeof img === "string" ? img : resolveImage(img.src);
+	const buffer = fs.readFileSync(resolvedPath);
+	const base64 = btoa(buffer.toString("binary"));
+
+	return `data:image/png;base64,${base64}`;
 }
 
-export async function createImage(
-	markup: Parameters<typeof satori>[0],
-	opts: { width: number; height: number },
-) {
+function resolveImage(src: string) {
+	if (import.meta.env.DEV) {
+		return src.replace("/@fs", "").replace(/\?.*/, "");
+	}
+
+	const distDir = path.join(process.cwd(), "./dist");
+	return path.join(distDir, "." + src);
+}
+
+async function createImage(markup: ReactNode, opts: { width: number; height: number }) {
 	const svg = await satori(markup, {
 		...opts,
 		fonts: [
@@ -70,13 +88,23 @@ export async function createImage(
 	return toPng(svg);
 }
 
-export function toPng(svg: string) {
+function toPng(svg: string) {
 	const resvg = new Resvg(svg);
 	const pngData = resvg.render();
 	return pngData.asPng();
 }
 
-export function backgroundPattern(width: number, height: number, density: number = 20) {
+class PNGResponse extends Response {
+	constructor(image: ArrayBuffer) {
+		super(image, {
+			headers: {
+				"Content-Type": "image/png",
+			},
+		});
+	}
+}
+
+function backgroundPattern(width: number, height: number, density: number = 20) {
 	const cellSize = width / density;
 	const dotSize = cellSize / 25;
 	return (
@@ -93,11 +121,3 @@ export function backgroundPattern(width: number, height: number, density: number
 	);
 }
 
-export function resolveContentImage(src: string) {
-	if (import.meta.env.DEV) {
-		return src.replace("/@fs", "").replace(/\?.*/, "");
-	}
-
-	const distDir = path.join(process.cwd(), "./dist");
-	return path.join(distDir, "." + src);
-}

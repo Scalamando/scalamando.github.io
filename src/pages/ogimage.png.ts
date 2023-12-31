@@ -1,8 +1,7 @@
 import { defineOgImageHandler } from "@/utils/ogimage";
-import { html } from "satori-html";
 
 export const GET = defineOgImageHandler(
-	() => html`
+	({ html }) => html`
 		<div tw="w-full h-full flex flex-col justify-center items-center p-12">
 			<h1 tw="text-[350px] text-black">Raimund</h1>
 			<h2
