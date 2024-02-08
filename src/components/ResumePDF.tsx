@@ -188,7 +188,7 @@ export default ({
 						rai-canzler.de
 					</Link>
 				</View>
-				<View style={styles.asideContent}>
+				<View>
 					<Text style={[styles.asideHeading, { marginTop: 0 }]}>Skills</Text>
 
 					<Text style={styles.asideSubHeading}>Programming Languages</Text>
