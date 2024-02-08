@@ -19,6 +19,16 @@ Font.register({
 	src: path.join(fontPath, "Ranade-Bold.woff"),
 	fontWeight: 700,
 });
+Font.register({
+	family: "Atkinson Hyperlegible",
+	src: path.join(fontPath, "Atkinson-Hyperlegible-Regular-102.woff"),
+	fontWeight: 400,
+});
+Font.register({
+	family: "Atkinson Hyperlegible",
+	src: path.join(fontPath, "Atkinson-Hyperlegible-Bold-102.woff"),
+	fontWeight: 700,
+});
 
 const colors = twConfig.theme.colors;
 const headerHeight = 100;
@@ -27,7 +37,7 @@ const styles = StyleSheet.create({
 	// Create styles
 	page: {
 		fontFamily: "Ranade",
-		fontSize: 8,
+		fontSize: 10,
 		fontWeight: 400,
 		lineHeight: 1.6,
 		color: colors.slate[500],
@@ -53,32 +63,35 @@ const styles = StyleSheet.create({
 		marginBottom: 12,
 	},
 	subheading: {
-		fontSize: 10,
 		color: colors.slate[500],
 	},
 	experience: {},
 	experienceHeading: {
-		fontSize: 12,
+		fontSize: 14,
 		fontWeight: 700,
 		color: colors.cyan[500],
 	},
 	experienceItems: {
-		gap: 16,
+		gap: 20,
 		paddingTop: 10,
 	},
 	experienceItem: {},
 	experienceItemHeading: {
-		fontSize: 10,
+		fontSize: 11,
 		color: colors.slate[600],
 	},
 	experienceCompany: {
 		color: colors.slate[800],
 		fontWeight: 700,
 	},
-	experienceTime: {},
+	experienceTime: {
+		fontFamily: "Atkinson Hyperlegible",
+		marginTop: 1,
+	},
 	experienceDescription: {
-		marginTop: 6,
-		gap: 2,
+		fontFamily: "Atkinson Hyperlegible",
+		marginTop: 4,
+		gap: 3,
 	},
 	experienceDescriptionItem: {
 		flexDirection: "row",
@@ -93,18 +106,18 @@ const styles = StyleSheet.create({
 	},
 	asideHeading: {
 		marginTop: 36,
-		fontSize: 12,
+		fontSize: 14,
 		fontWeight: 700,
 		color: colors.cyan[500],
 	},
 	asideSubHeading: {
 		marginTop: 10,
 		marginBottom: 2,
-		fontSize: 9,
 		fontWeight: 700,
 		color: colors.slate[800],
 	},
 	contact: {
+		fontFamily: "Atkinson Hyperlegible",
 		paddingTop: 12,
 		height: headerHeight,
 	},
@@ -112,7 +125,9 @@ const styles = StyleSheet.create({
 		color: colors.slate[500],
 		textDecoration: "none",
 	},
-	asideContent: {},
+	asideContent: {
+		fontFamily: "Atkinson Hyperlegible",
+	},
 });
 
 // Create Document Component
@@ -177,13 +192,17 @@ export default ({
 					<Text style={[styles.asideHeading, { marginTop: 0 }]}>Skills</Text>
 
 					<Text style={styles.asideSubHeading}>Programming Languages</Text>
-					<Text>JavaScript, TypeScript, HTML, (S)CSS, Go</Text>
+					<Text style={styles.asideContent}>JavaScript, TypeScript, HTML, (S)CSS, Go</Text>
 
 					<Text style={styles.asideSubHeading}>Libraries & Frameworks</Text>
-					<Text>Vue, Nuxt, React, Astro, Tailwind, Express, Fastify, Vite</Text>
+					<Text style={styles.asideContent}>
+						Vue, Nuxt, React, Astro, Tailwind, Express, Fastify, Vite
+					</Text>
 
 					<Text style={styles.asideSubHeading}>Tools & Platforms</Text>
-					<Text>Git, Docker, Docker Compose, GitHub, GitLab, Netlify, Hetzner, Figma</Text>
+					<Text style={styles.asideContent}>
+						Git, Docker, Docker Compose, GitHub, GitLab, Netlify, Hetzner, Figma
+					</Text>
 
 					<Text style={styles.asideHeading}>Selected Project</Text>
 
@@ -211,7 +230,7 @@ export default ({
 							<Path style={{ strokeWidth: 2 }} stroke={colors.slate[700]} d="M15 4h5v5" />
 						</Svg>
 					</Link>
-					<Text>
+					<Text style={styles.asideContent}>
 						Event companion app that enables visitors to experience first semester media informatics
 						students' projects. Among other things, projects have to be unlocked at different
 						locations in the city of Lübeck which can be found using the builtin map.
@@ -220,11 +239,11 @@ export default ({
 					<Text style={styles.asideHeading}>Education</Text>
 
 					<Text style={styles.asideSubHeading}>Universität zu Lübeck</Text>
-					<Text>Bachelor of Science in Media Informatics</Text>
-					<Text>Master of Science in Media Informatics (in progress)</Text>
+					<Text style={styles.asideContent}>Media Informatics, B.Sc.</Text>
+					<Text style={styles.asideContent}>Media Informatics, M.Sc. (in progress)</Text>
 
 					<Text style={styles.asideHeading}>Interests</Text>
-					<Text>Kite surfing, rock climbing, baking, gaming</Text>
+					<Text style={styles.asideContent}>Kite surfing, rock climbing, baking, gaming</Text>
 				</View>
 			</View>
 		</Page>
