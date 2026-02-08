@@ -74,7 +74,6 @@ function resolveImage(src: string) {
 }
 
 async function createImage(markup: ReactNode, opts: { width: number; height: number }) {
-	console.log(theme.colors);
 	const svg = await satori(markup, {
 		...opts,
 		fonts: [
