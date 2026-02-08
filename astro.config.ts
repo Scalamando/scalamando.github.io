@@ -1,17 +1,14 @@
 import { defineConfig } from "astro/config";
 import fs from "node:fs";
 import Icons from "unplugin-icons/vite";
-import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
+import tailwindcss from "@tailwindcss/vite"
 
 import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
-		tailwind({
-			configFile: "tailwind.config.ts",
-		}),
 		react(),
 		compress(),
 	],
@@ -44,6 +41,7 @@ export default defineConfig({
 					return `export default new Uint8Array([${[...data.values()]}]);`;
 				},
 			},
+			tailwindcss()
 		],
 	},
 });

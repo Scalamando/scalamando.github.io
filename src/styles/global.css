@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@source "../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
+
+@theme {
+	--font-sans:
+		Ranade, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol", "Noto Color Emoji";
+	--color-black: #0a0a0a;
+	--color-brand-discord: #5865f2;
+	--color-brand-linkedin: #0073af;
+	--color-brand-github: #24292f;
+	--drop-shadow-none: 0 0 0 rgb(0 0 0 / 0);
+	--drop-shadow: 6px 6px 0 rgb(0 0 0 / 0.25);
+	--drop-shadow-lifted: 8px 8px 0 rgb(0 0 0 / 0.25);
+}

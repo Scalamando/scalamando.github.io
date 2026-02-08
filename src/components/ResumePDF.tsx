@@ -1,6 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, Font, Link, Svg, Path } from "@react-pdf/renderer";
 import path from "node:path";
-import twConfig from "../.../../../tailwind.config";
+import { colors } from "../styles/theme";
 import type { CollectionEntry } from "astro:content";
 
 const fontPath = path.join(process.cwd(), "./src/assets");
@@ -30,7 +30,6 @@ Font.register({
 	fontWeight: 700,
 });
 
-const colors = twConfig.theme.colors;
 const headerHeight = 100;
 
 const styles = StyleSheet.create({
@@ -192,16 +191,18 @@ export default ({
 					<Text style={[styles.asideHeading, { marginTop: 0 }]}>Skills</Text>
 
 					<Text style={styles.asideSubHeading}>Programming Languages</Text>
-					<Text style={styles.asideContent}>JavaScript, TypeScript, HTML, (S)CSS, Go</Text>
+					<Text style={styles.asideContent}>
+						Java-/TypeScript, PHP, Python, Nix, Bash, HTML, CSS
+					</Text>
 
 					<Text style={styles.asideSubHeading}>Libraries & Frameworks</Text>
 					<Text style={styles.asideContent}>
-						Vue, Nuxt, React, Astro, Tailwind, Express, Fastify, Vite
+						Vue & Nuxt, React, Tailwindcss, Express/Fastify, Vite
 					</Text>
 
 					<Text style={styles.asideSubHeading}>Tools & Platforms</Text>
 					<Text style={styles.asideContent}>
-						Git, Docker, Docker Compose, GitHub, GitLab, Netlify, Hetzner, Figma
+						Git, Docker (Compose), GitHub & -Lab (incl. CI/CD), Turborepo, Netlify, Hetzner, Figma
 					</Text>
 
 					<Text style={styles.asideHeading}>Selected Project</Text>
@@ -240,10 +241,12 @@ export default ({
 
 					<Text style={styles.asideSubHeading}>Universität zu Lübeck</Text>
 					<Text style={styles.asideContent}>Media Informatics, B.Sc.</Text>
-					<Text style={styles.asideContent}>Media Informatics, M.Sc. (in progress)</Text>
+					<Text style={styles.asideContent}>Media Informatics, M.Sc.</Text>
 
 					<Text style={styles.asideHeading}>Interests</Text>
-					<Text style={styles.asideContent}>Kite surfing, rock climbing, baking, gaming</Text>
+					<Text style={{ ...styles.asideContent, marginTop: 8 }}>
+						Kite surfing, rock climbing, smart home & self-hosting, baking, gaming
+					</Text>
 				</View>
 			</View>
 		</Page>

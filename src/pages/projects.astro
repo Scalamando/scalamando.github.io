@@ -21,11 +21,11 @@ projects.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 			projects.map((project) => (
 				<div class="drop-shadow transition hover:drop-shadow-lifted">
 					<article class="group rounded-2xl border-2 border-black bg-white transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:-rotate-1 hover:scale-[103%]">
-						<a href={`/projects/${project.slug}`} class="block p-4">
+						<a href={`/projects/${project.id}`} class="block p-4">
 							<Image
 								src={project.data.image}
 								alt={project.data.imageAlt}
-								transition:name={`project-img-${project.slug}`}
+								transition:name={`project-img-${project.id}`}
 								class="rounded"
 							/>
 							<h2 class="anim-underline mt-4 inline-block text-xl font-medium leading-none">
@@ -53,7 +53,7 @@ projects.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 		top: -1px;
 		bottom: -1px;
 		z-index: -1;
-		background: linear-gradient(to right, theme("colors.lime.300"), theme("colors.lime.300"));
+		background: linear-gradient(to right, var(--color-lime-300), var(--color-lime-300));
 		background-size: 0 100%;
 		background-position: left bottom;
 		background-repeat: no-repeat;

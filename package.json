@@ -11,33 +11,35 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.3.3",
-		"@astrojs/react": "^3.0.9",
-		"@astrojs/tailwind": "^5.0.4",
-		"@types/react": "^18.2.46",
-		"@types/react-dom": "^18.2.18",
-		"astro": "^4.0.8",
-		"astro-compress": "^2.2.5",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"tailwindcss": "^3.4.0",
-		"typescript": "^5.3.3"
-	},
-	"devDependencies": {
+		"@astrojs/check": "^0.9.6",
+		"@astrojs/react": "^4.4.2",
 		"@floating-ui/dom": "^1.5.3",
 		"@iconify-json/tabler": "^1.1.102",
-		"@react-pdf/renderer": "^3.1.14",
+		"@react-pdf/renderer": "^4.3.2",
 		"@resvg/resvg-js": "^2.6.0",
-		"@tailwindcss/typography": "^0.5.10",
-		"@tsconfig/node20": "^20.1.2",
-		"@types/node": "^20.10.5",
-		"prettier": "^3.1.1",
-		"prettier-plugin-astro": "^0.12.2",
-		"prettier-plugin-tailwindcss": "^0.5.9",
-		"satori": "^0.10.11",
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.1.18",
+		"astro": "^5.17.1",
+		"astro-compress": "^2.3.9",
+		"colorjs.io": "^0.6.1",
+		"react": "^19.0.4",
+		"react-dom": "^19.0.4",
+		"satori": "^0.19.1",
 		"satori-html": "^0.3.2",
 		"sharp": "^0.33.1",
+		"tailwindcss": "^4.1.18",
+		"typescript": "^5.9.3",
 		"unplugin-icons": "^0.18.1",
 		"zod": "^3.22.4"
-	}
+	},
+	"devDependencies": {
+		"@tsconfig/node22": "^22.0.5",
+		"@types/node": "^20.10.5",
+		"@types/react": "^19.2.13",
+		"@types/react-dom": "^19.2.3",
+		"prettier": "^3.1.1",
+		"prettier-plugin-astro": "^0.12.2",
+		"prettier-plugin-tailwindcss": "^0.7.2"
+	},
+	"packageManager": "pnpm@10.29.1"
 }

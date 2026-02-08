@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import TabGroup from "@/components/TabGroup.astro";
 import Tab from "@/components/Tab.astro";
 import Link from "@/components/Link.astro";
@@ -13,6 +12,7 @@ import IconGitHub from "~icons/tabler/brand-github";
 import IconLinkedIn from "~icons/tabler/brand-linkedin";
 import IconMail from "~icons/tabler/mail";
 import IconDiscord from "~icons/tabler/brand-discord";
+import "../styles/global.css";
 
 interface Props {
 	title: string;
@@ -63,7 +63,6 @@ const ogimageURL = new URL(ogimagePath, Astro.site!);
 		<meta name="twitter:image" content={ogimageURL} />
 
 		<meta name="generator" content={Astro.generator} />
-		<ViewTransitions fallback="swap" />
 	</head>
 
 	<body class="flex p-2 md:p-4">
@@ -73,24 +72,24 @@ const ogimageURL = new URL(ogimagePath, Astro.site!);
 					<TabGroup>
 						<Tab route="/">
 							<IconHome slot="icon" class="size-6" />
-							 Home
+							Home
 						</Tab>
 						<Tab route="/projects">
 							<IconFolders class="size-6" slot="icon" />
-							 Projects
+							Projects
 						</Tab>
 						<Tab route="/experience">
 							<IconBriefcase class="size-6" slot="icon" />
-							 Experience
+							Experience
 						</Tab>
 						<Tab route="/education">
 							<IconSchool class="size-6" slot="icon" />
-							 Education
+							Education
 						</Tab>
 					</TabGroup>
 				</nav>
 				<div
-					class="glow-rainbow w-full rounded-2xl border-2 border-black bg-white px-6 pb-6 pt-5 sm:px-8 sm:pb-8 sm:pt-7 md:px-14 md:pb-[3.25rem] md:pt-12"
+					class="glow-rainbow w-full rounded-2xl border-2 border-black bg-white px-6 pt-5 pb-6 sm:px-8 sm:pt-7 sm:pb-8 md:px-14 md:pt-12 md:pb-13"
 				>
 					<slot name="header" />
 				</div>
@@ -100,7 +99,7 @@ const ogimageURL = new URL(ogimagePath, Astro.site!);
 				<section class="relative isolate mt-8 flex flex-col items-center gap-5 md:flex-row">
 					<div class="drop-shadow">
 						<h3
-							class="absolute bottom-[calc(100%-1rem)] left-0 z-10 w-max rounded-full border-2 border-black bg-cyan-400 px-6 py-3 text-xl font-bold leading-none"
+							class="absolute bottom-[calc(100%-1rem)] left-0 z-10 w-max rounded-full border-2 border-black bg-cyan-400 px-6 py-3 text-xl leading-none font-bold"
 						>
 							Let's Connect
 						</h3>
@@ -117,14 +116,14 @@ const ogimageURL = new URL(ogimagePath, Astro.site!);
 							<Link
 								href="https://github.com/Scalamando"
 								external
-								class="!bg-brand-github text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
+								class="bg-brand-github! hover:drop-shadow-lifted text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 							>
 								<IconGitHub /> GitHub
 							</Link>
 							<Link
 								href="https://www.linkedin.com/in/raimund-canzler/"
 								external
-								class="!bg-brand-linkedin text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
+								class="bg-brand-linkedin! hover:drop-shadow-lifted text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 							>
 								<IconLinkedIn /> LinkedIn
 							</Link>
@@ -132,14 +131,14 @@ const ogimageURL = new URL(ogimagePath, Astro.site!);
 						<div class="flex gap-4">
 							<Link
 								href="mailto:raimund@canzler.email"
-								class="bg-white text-black transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
+								class="hover:drop-shadow-lifted bg-white text-black transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 							>
 								<IconMail /> Mail
 							</Link>
 							<Tooltip content="Username copied!">
 								<Button
 									onclick="navigator.clipboard.writeText('scalamando')"
-									class="!bg-brand-discord text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-lifted focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
+									class="bg-brand-discord! hover:drop-shadow-lifted text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none"
 								>
 									<IconDiscord /> Discord
 								</Button>
@@ -148,7 +147,7 @@ const ogimageURL = new URL(ogimagePath, Astro.site!);
 					</div>
 				</section>
 				<section class="mt-12 flex flex-col items-center justify-between gap-2 md:flex-row">
-					<span class="order-3 md:order-none">
+					<span class="order-3 md:order-0">
 						&copy; Raimund Canzler {new Date().toLocaleDateString("en-US", { year: "numeric" })}
 					</span>
 					<ul class="flex gap-2">
@@ -175,6 +174,10 @@ const ogimageURL = new URL(ogimagePath, Astro.site!);
 		</div>
 
 		<style>
+			@view-transition {
+				navigation: auto;
+			}
+
 			@font-face {
 				font-family: Ranade;
 				src:

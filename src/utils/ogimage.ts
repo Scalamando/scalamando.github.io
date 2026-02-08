@@ -10,7 +10,7 @@ import path from "node:path";
 import type { ReactNode } from "react";
 import satori from "satori";
 import { html } from "satori-html";
-import twConfig from "../../tailwind.config";
+import * as theme from "../styles/theme";
 
 const OG_WIDTH = 2400;
 const OG_HEIGHT = 1260;
@@ -54,7 +54,6 @@ export function defineOgImageHandler<RouteProps extends Record<string, any>>(
 	};
 }
 
-
 type ContentImage = z.infer<ReturnType<ImageFunction>>;
 
 function image(img: string | ContentImage) {
@@ -75,6 +74,7 @@ function resolveImage(src: string) {
 }
 
 async function createImage(markup: ReactNode, opts: { width: number; height: number }) {
+	console.log(theme.colors);
 	const svg = await satori(markup, {
 		...opts,
 		fonts: [
@@ -82,7 +82,7 @@ async function createImage(markup: ReactNode, opts: { width: number; height: num
 			{ name: "Ranade", data: ranadeMediumFont, weight: 500 },
 			{ name: "Ranade", data: ranadeBoldFont, weight: 700 },
 		],
-		tailwindConfig: { theme: twConfig.theme },
+		tailwindConfig: { theme },
 	});
 
 	return toPng(svg);
@@ -91,7 +91,7 @@ async function createImage(markup: ReactNode, opts: { width: number; height: num
 function toPng(svg: string) {
 	const resvg = new Resvg(svg);
 	const pngData = resvg.render();
-	return pngData.asPng();
+	return pngData.asPng().buffer as ArrayBuffer;
 }
 
 class PNGResponse extends Response {
@@ -120,4 +120,3 @@ function backgroundPattern(width: number, height: number, density: number = 20) 
 `)
 	);
 }
-

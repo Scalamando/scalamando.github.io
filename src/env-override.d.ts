@@ -1,4 +1,4 @@
 declare module "*.woff" {
-	const woff: Uint8Array;
+	const woff: ArrayBuffer;
 	export default woff;
 }

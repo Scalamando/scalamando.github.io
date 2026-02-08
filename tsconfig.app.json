@@ -1,6 +1,6 @@
 {
 	"extends": "astro/tsconfigs/strictest",
-	"include": ["src/**/*", "src/**/*.astro", "tailwind.config.ts"],
+	"include": ["src/**/*", "src/**/*.astro"],
 	"compilerOptions": {
 		"composite": true,
 

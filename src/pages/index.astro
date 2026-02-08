@@ -16,7 +16,7 @@ if(!featuredProject) {
 
 <Layout title="Raimund - Web Developer and UX/UI Designer">
 	<div slot="header">
-		<h1 class="text-3xl font-bold !leading-snug sm:text-4xl md:text-5xl">
+		<h1 class="text-3xl font-bold leading-snug! sm:text-4xl md:text-5xl">
 			Hey, I'm <span class="whitespace-nowrap"><span class="text-cyan-500">Raimund</span> :)</span>
 			<br />
 			<span class="whitespace-nowrap text-cyan-500">Web Developer</span> and <span
@@ -42,7 +42,7 @@ if(!featuredProject) {
 			<div class="relative z-0 rounded-2xl border-2 border-black bg-white p-6">
 				<div class="flex flex-col gap-4 md:flex-row md:gap-6">
 					<Image
-						transition:name={`project-img-${featuredProject.slug}`}
+						transition:name={`project-img-${featuredProject.id}`}
 						src={featuredProject.data.image}
 						alt={featuredProject.data.imageAlt}
 						class="rounded-lg object-cover md:h-56"
@@ -51,7 +51,7 @@ if(!featuredProject) {
 						<h3 class="text-2xl font-bold md:text-3xl">{featuredProject.data.titleShort}</h3>
 						<p class="line-clamp-6">{featuredProject.data.description}</p>
 						<a
-							href={`/projects/${featuredProject.slug}`}
+							href={`/projects/${featuredProject.id}`}
 							class="inline-block whitespace-nowrap font-medium underline"
 							>Read more<IconArrowUpRight class="inline size-5" /></a
 						>
@@ -74,7 +74,7 @@ if(!featuredProject) {
 
 	.hero-hover:hover,
 	.hero-hover:focus-visible {
-		color: theme("colors.white") !important;
+		color: var(--color-white) !important;
 	}
 
 	.hero-hover::after {
@@ -86,7 +86,7 @@ if(!featuredProject) {
 		width: var(--size);
 		padding-bottom: var(--size);
 		border-radius: 9999px;
-		background: theme("colors.black");
+		background: var(--color-black);
 		transform: translate(-50%, 50%) scale(var(--scale));
 		transition: transform var(--duration) ease;
 	}

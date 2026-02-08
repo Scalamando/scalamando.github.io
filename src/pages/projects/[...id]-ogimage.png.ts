@@ -30,7 +30,7 @@ export const GET = defineOgImageHandler<RouteProps>(
 export async function getStaticPaths() {
 	const projects = await getCollection("projects");
 	return projects.map((project) => ({
-		params: { slug: project.slug },
+		params: { id: project.id },
 		props: { project },
 	}));
 }

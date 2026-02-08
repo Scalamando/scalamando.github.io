@@ -1,15 +1,15 @@
-import { z, defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const projectCollection = defineCollection({
-	type: "content",
+	loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
 			titleShort: z.string(),
 			description: z.string(),
-			image: image().refine((img) => img.width / img.height === 4 / 3, {
-				message: "Image must have an aspect ration of 4/3!",
-			}),
+			image: image(),
 			imageAlt: z.string(),
 			lastUpdate: z.date(),
 			sortOrder: z.number(),
@@ -18,7 +18,7 @@ const projectCollection = defineCollection({
 });
 
 const educationCollection = defineCollection({
-	type: "data",
+	loader: glob({ base: "./src/content/education", pattern: "**/*.{yml,yaml}" }),
 	schema: z.object({
 		institution: z.string(),
 		major: z.string(),
@@ -29,7 +29,7 @@ const educationCollection = defineCollection({
 });
 
 const experienceCollection = defineCollection({
-	type: "data",
+	loader: glob({ base: "./src/content/experience", pattern: "**/*.{yml,yaml}" }),
 	schema: z.object({
 		type: z.string(),
 		company: z.string(),
