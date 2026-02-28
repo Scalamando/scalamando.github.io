@@ -14,6 +14,7 @@ const projectCollection = defineCollection({
 			lastUpdate: z.date(),
 			sortOrder: z.number(),
 			featured: z.boolean().default(false),
+			workInProgress: z.boolean().default(false),
 		}),
 });
 
@@ -25,6 +26,7 @@ const educationCollection = defineCollection({
 		degree: z.string(),
 		start: z.date(),
 		end: z.date(),
+		note: z.string(),
 	}),
 });
 

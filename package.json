@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.6",
+		"@astrojs/mdx": "^4.3.13",
 		"@astrojs/react": "^4.4.2",
 		"@floating-ui/dom": "^1.5.3",
 		"@iconify-json/tabler": "^1.1.102",

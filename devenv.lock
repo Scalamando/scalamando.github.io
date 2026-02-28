@@ -3,10 +3,10 @@
     "devenv": {
       "locked": {
         "dir": "src/modules",
-        "lastModified": 1770574308,
+        "lastModified": 1772143911,
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "819a2f6ab5366c456984b3c2eec3190fa9638314",
+        "rev": "83c4b5682b84fe04c049970792f38d5879d3c0f1",
         "type": "github"
       },
       "original": {
@@ -78,10 +78,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1769939035,
+        "lastModified": 1772024342,
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "a8ca480175326551d6c4121498316261cbb5b260",
+        "rev": "6e34e97ed9788b17796ee43ccdbaf871a5c2b476",
         "type": "github"
       },
       "original": {
@@ -130,10 +130,10 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1770515899,
+        "lastModified": 1771723719,
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "fd928847a8e03461e4b37699e6218539b610217d",
+        "rev": "36b8fcb216736b0e1869740b324ae521e5df23d8",
         "type": "github"
       },
       "original": {
@@ -161,10 +161,10 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1770537093,
+        "lastModified": 1772082373,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fef9403a3e4d31b0a23f0bacebbec52c248fbb51",
+        "rev": "26eaeac4e409d7b5a6bf6f90a2a2dc223c78d915",
         "type": "github"
       },
       "original": {
@@ -174,15 +174,15 @@
     },
     "nodejs": {
       "locked": {
-        "lastModified": 1770169770,
+        "lastModified": 1771861243,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aa290c9891fa4ebe88f8889e59633d20cc06a5f2",
+        "rev": "80d901ec0377e19ac3f7bb8c035201e2e098cc97",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "ref": "aa290c9",
+        "ref": "80d901e",
         "type": "indirect"
       }
     },
@@ -244,7 +244,7 @@
       },
       "locked": {
         "lastModified": 312764400,
-        "narHash": "sha256-0JaWpaTJlfl3Wq1eayJFUTFAhuJx0MB2RcT7EiinXgE=",
+        "narHash": "sha256-AikdVn0ERjx+Jlz7dkQw+mfI7/kyAPMj4RsBdBY7TGI=",
         "type": "tarball",
         "url": "https://nix-versions.oeiuwq.com/flake.zip/nodejs_22@~22.22.0"
       },

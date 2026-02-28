@@ -1,0 +1,67 @@
+---
+interface Props {
+	"data-meta"?: string;
+	"data-language"?: string;
+	"class"?: string;
+}
+
+const {
+	"data-meta": rawMeta,
+	"data-language": language,
+	"class": className,
+	...props
+} = Astro.props;
+
+const meta: Record<string, string> = {};
+for (const prop of rawMeta?.split(",") ?? []) {
+	const [key, value] = prop.split("=");
+	meta[key!.trim()] = value!;
+}
+
+const title = meta.title;
+
+const langColor = (lang?: string) => {
+	switch (lang) {
+		case "ts":
+		case "typescript":
+			return { color: "white", backgroundColor: "#3178C6" };
+		default:
+			return { color: "black", backgroundColor: "white" };
+	}
+};
+---
+
+<figure
+	class:list={[
+		"code-snippet not-prose my-6 overflow-hidden rounded-xl border-2 border-black",
+		className,
+	]}
+>
+	<figcaption
+		class="flex items-center justify-between gap-3 border-b-2 border-black bg-slate-100 px-4 py-2 leading-none"
+	>
+		<span class="truncate font-mono text-xs font-semibold tracking-wide text-black/85">{title}</span
+		>
+		<span
+			class="shrink-0 rounded-full border border-black/20 bg-white px-2 py-1 font-mono text-[10px] font-semibold tracking-wide text-black/70 uppercase"
+			style={{ ...langColor(language) }}
+		>
+			{language}
+		</span>
+	</figcaption>
+
+	<pre {...props}><slot /></pre>
+</figure>
+
+<style>
+	.code-snippet :global(pre) {
+		margin: 0;
+		border: 0;
+		border-radius: 0;
+	}
+
+	.code-snippet :global(pre > code) {
+		display: block;
+		padding: 1rem;
+	}
+</style>

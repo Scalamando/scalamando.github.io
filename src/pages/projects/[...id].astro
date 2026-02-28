@@ -1,5 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import WorkInProgress from "@/components/WorkInProgress.astro";
+import CodeSnippet from "@/components/CodeSnippet.astro";
 import { Image } from "astro:assets";
 import { render } from "astro:content";
 import { getCollection } from "astro:content";
@@ -33,12 +35,33 @@ const { Content } = await render(project);
 			>projects /</a
 		>
 		<h1 class="mt-1.5!">{project.data.title}</h1>
-		<Image
-			transition:name={`project-img-${project.id}`}
-			src={project.data.image}
-			alt={project.data.imageAlt}
+		<div class="relative">
+			<Image
+				transition:name={`project-img-${project.id}`}
+				src={project.data.image}
+				alt={project.data.imageAlt}
+				class="border border-black/20"
+			/>
+			{
+				project.data.workInProgress && (
+					<div class="wip-pill absolute right-2 bottom-0 z-10 -rotate-6 rounded-full p-1.5 md:-right-5 md:p-2">
+						<span class="block rounded-full bg-white/90 px-3 py-1 text-sm font-extrabold! tracking-wide uppercase md:px-3 md:py-1 md:text-base">
+							Work in Progress
+						</span>
+					</div>
+				)
+			}
+		</div>
+		{
+			project.data.workInProgress && (
+				<WorkInProgress topic={project.data.titleShort} class="my-10 md:my-14" />
+			)
+		}
+		<Content
+			components={{
+				pre: CodeSnippet,
+			}}
 		/>
-		<Content />
 		<footer class="mt-6 md:mt-10">
 			<span class="block text-sm font-bold uppercase">Last updated</span>
 			<time datetime={project.data.lastUpdate.toISOString()} class="block text-base"
@@ -78,5 +101,36 @@ const { Content } = await render(project);
 	.prose-sm :is(h2, h3) {
 		--tw-font-weight: var(--font-weight-medium);
 		font-weight: var(--font-weight-medium);
+	}
+
+	.wip-pill {
+		--w: 24px;
+		--angle: 55deg;
+		/* Use 1px fades for anti-aliasing */
+		background: repeating-linear-gradient(
+			var(--angle),
+			#facc15 0 calc(var(--w) / 2 - 1px),
+			#111827 calc(var(--w) / 2) calc(var(--w) - 1px),
+			#facc15 var(--w)
+		);
+		background-size: calc(var(--w) / sin(var(--angle))) 100%;
+		border: 2px solid #111827;
+		box-shadow: var(--drop-shadow);
+		animation: wip-pill-scroll 2s linear infinite reverse;
+	}
+
+	@keyframes wip-pill-scroll {
+		from {
+			background-position: calc(var(--w) / sin(var(--angle))) 0;
+		}
+		to {
+			background-position: 0 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.wip-pill {
+			animation: none;
+		}
 	}
 </style>

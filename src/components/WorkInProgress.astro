@@ -1,0 +1,57 @@
+---
+import Link from "@/components/Link.astro";
+import IconLinkedIn from "~icons/tabler/brand-linkedin";
+import IconMail from "~icons/tabler/mail";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"aside"> {
+	topic?: string;
+}
+
+const { topic = "this project", class: className, ...attrs } = Astro.props;
+---
+
+<aside
+	class:list={["not-prose text-left text-black", className]}
+	aria-label="Work in progress notice"
+	{...attrs}
+>
+	<div class="construction-accent pl-4 md:pl-5">
+		<p class="text-sm leading-relaxed text-black/90 md:text-base">
+			I am still in the process of writing-up my work on {topic}. If you are hiring, I would
+			be glad to share the project goals, technical decisions, and results in a quick chat.
+		</p>
+		<div class="mt-4 flex flex-wrap gap-2.5">
+			<Link
+				href="https://www.linkedin.com/in/raimund-canzler/"
+				external
+				class="bg-brand-linkedin! hover:drop-shadow-lifted px-4! py-2.5! text-sm! text-white! no-underline! transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none md:text-base!"
+			>
+				<IconLinkedIn /> Message on LinkedIn
+			</Link>
+			<Link
+				href="mailto:raimund@canzler.email"
+				class="hover:drop-shadow-lifted bg-white px-4! py-2.5! text-sm! text-black no-underline! transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none md:text-base!"
+			>
+				<IconMail /> Email Me
+			</Link>
+		</div>
+	</div>
+</aside>
+
+<style>
+	.construction-accent {
+		position: relative;
+	}
+
+	.construction-accent::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: -6px;
+		width: 5px;
+		border-radius: 999px;
+		background: repeating-linear-gradient(-50deg, #facc15 0 6px, #111827 7px 11px, #facc15 12px);
+	}
+</style>

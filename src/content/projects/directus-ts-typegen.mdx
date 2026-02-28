@@ -1,0 +1,29 @@
+---
+title: Directus TypeScript Typegen Extension
+titleShort: Directus TS Typegen
+description: A suite of tools to automatically generates TypeScript types for your Directus schema, making it easier to work with your Directus data in a type-safe manner.
+image: "./directus-ts-typegen.png"
+imageAlt: Screenshot of a custom Directus admin extension called “TypeScript TypeGen,” showing generated TypeScript schema/interfaces on the left (with a “Copy to clipboard” button) and configuration options on the right for required-field nullability, type prefix/suffix, and output style (interface vs type) to produce Directus SDK-ready types.
+lastUpdate: 2026-02-28T14:18:00
+sortOrder: 2
+workInProgress: true
+---
+
+import Link from "@/components/Link.astro";
+import IconGitHub from "~icons/tabler/brand-github";
+
+**TL;DR:** _Directus TS Typegen_ is an open-source Directus extension and CLI
+that generates accurate TypeScript types from a Directus instance to improve
+SDK type safety and developer experience. I built and actively maintain it
+based on real production pain points, and to my knowledge it is currently the
+only public package covering all Directus JSON field variants and relation
+types (including M2A); it is already used by my team and publicly available (7
+GitHub stars).
+
+{<Link
+  href="https://github.com/Scalamando/directus-extension-ts-typegen"
+  external
+  class="not-prose bg-brand-github! hover:drop-shadow-lifted w-fit px-4! py-2.5! text-sm! text-white no-underline! transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:drop-shadow-none md:text-base!"
+>
+  <IconGitHub /> Directus TS Typegen on GitHub
+</Link>}

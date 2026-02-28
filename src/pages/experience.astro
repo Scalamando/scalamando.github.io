@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { markdownToHtml } from "@/utils/markdown";
 
 import IconPin from "~icons/tabler/pin";
 import IconMapPin from "~icons/tabler/map-pin";
@@ -19,7 +20,7 @@ experiences.sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
 		<section class="mt-12 space-y-8">
 			{
 				experiences.map((exp, index) => (
-					<div class="group flex gap-6">
+					<article class="group flex gap-6">
 						<div class="relative mt-2 group-first:mt-0!">
 							{index === 0 ? (
 								<IconMapPin />
@@ -31,11 +32,11 @@ experiences.sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
 								</span>
 							)}
 							{index !== experiences.length - 1 && (
-								<span class="absolute -bottom-6 left-[calc(50%-1px)] top-8 block w-0.5 rounded-full bg-black" />
+								<span class="absolute top-8 -bottom-6 left-[calc(50%-1px)] block w-0.5 rounded-full bg-black" />
 							)}
 						</div>
 						<div>
-							<h2 class="text-2xl font-bold leading-tight">
+							<h2 class="text-2xl leading-tight font-bold">
 								{exp.data.company} <span class="hidden sm:inline">&middot;&#32;</span>
 								<br class="sm:hidden" /> <span class="font-normal">{exp.data.position}</span>
 							</h2>
@@ -54,11 +55,11 @@ experiences.sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
 							</p>
 							<ul class="mt-2 list-disc space-y-1">
 								{exp.data.description.map((line) => (
-									<li class="ml-4 max-w-[70ch]">{line}</li>
+									<li class="ml-4 md max-w-[70ch]" set:html={markdownToHtml(line)} />
 								))}
 							</ul>
 						</div>
-					</div>
+					</article>
 				))
 			}
 		</section>

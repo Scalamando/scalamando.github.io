@@ -2,6 +2,7 @@ import { Document, Page, Text, View, StyleSheet, Font, Link, Svg, Path } from "@
 import path from "node:path";
 import { colors } from "../styles/theme";
 import type { CollectionEntry } from "astro:content";
+import { markdownToPdfJsx } from "../utils/markdown";
 
 const fontPath = path.join(process.cwd(), "./src/assets");
 Font.register({
@@ -163,7 +164,7 @@ export default ({
 									{exp.data.description.map((desc) => (
 										<View style={styles.experienceDescriptionItem}>
 											<Text>&middot;</Text>
-											<Text>{desc}</Text>
+											<Text>{markdownToPdfJsx(desc)}</Text>
 										</View>
 									))}
 								</View>

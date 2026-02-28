@@ -15,3 +15,24 @@
 	--drop-shadow: 6px 6px 0 rgb(0 0 0 / 0.25);
 	--drop-shadow-lifted: 8px 8px 0 rgb(0 0 0 / 0.25);
 }
+
+@layer base {
+	.md a {
+		text-decoration: underline;
+	}
+
+	.prose,
+	.prose-sm,
+	.prose-lg {
+		hyphens: manual;
+		text-align: justify;
+
+		:where(li, ul, ol, h1, h2, h3, h4, h5, h6) {
+			text-align: start;
+		}
+
+		:where(video) {
+			border-radius: var(--radius-lg);
+		}
+	}
+}

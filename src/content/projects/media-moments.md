@@ -3,13 +3,22 @@ title: Media Moments
 titleShort: Media Moments
 description: As a contributor to the 'Meetup der Medieninformatik,' I conceptualized and brought to life the Media Moments web app. This application empowers pedestrians to connect with the projects crafted by first-semester media informatics students. Navigating the city of Lübeck, users can explore an interactive map pinpointing various project locations. The app seamlessly integrates with the physical world, allowing users to unlock exclusive content by simply scanning the QR code at each project site.
 image: "./media-moments.png"
-imageAlt: Smartphones displaying the map and station screens of the media moments app.
+imageAlt: "Three smartphone mockups of the Media Moments app: a city map with project markers, a stations list with locked and unlocked project cards, and a QR code input dialog used to unlock content during the event."
 lastUpdate: 2024-02-07T15:42:00
-sortOrder: 0
-featured: true
+sortOrder: 3
+workInProgress: true
 ---
 
-**Note**: This article is work in progress.
+**TL;DR:** _Media Moments_ is an event web app that made first-semester Media
+Informatics student projects discoverable to the public and helped promote the
+degree program. I co-developed the initial version as part of my degree and
+later designed and built multiple iterations (with support from my student
+assistant in the latest version), adding features like QR-based unlocks,
+achievements, AR mode, and challenge mechanics; from 2021 to 2025 it reached
+about 1,200 users despite minimal marketing, and is currently on hiatus with a
+planned return in 2027.
+
+## Motivation
 
 The ['Meetup der Medieninformatik'](https://www.uni-luebeck.de/aktuelles/pressemitteilung/artikel/media-moments-2023-digitale-studierenden-projekte-mitten-in-luebeck.html)
 serves as an annual technical showcase hosted by the Media Informatics major at
@@ -20,8 +29,6 @@ recognizing excellence in first-semester projects.
 
 The Media Moments web app, born from a 'bachelor project' during my
 undergraduate studies, is designed to showcase the EMI-Projects to the public.
-In 2024 the Media Moments will be publicly available on 14.02.2024 at
-[app.emi-award.de](https://app.emi-award.de).
 
 ### Technical Components: Under the Hood
 
