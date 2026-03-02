@@ -7,8 +7,17 @@ export const GET: APIRoute = async ({ site }) => {
 	const experiences = await getCollection("experience");
 	experiences.sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
 
+	const projects = await getCollection("projects");
+	const resumeProjects = projects
+		.filter((project) => project.data.inResume)
+		.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+
 	const pdfStream = await ReactPDF.renderToStream(
-		ResumePDF({ experiences, site: site ?? new URL("http://localhost:4321") }),
+		ResumePDF({
+			experiences,
+			projects: resumeProjects,
+			site: site ?? new URL("http://localhost:4321"),
+		}),
 	);
 	const pdf = await streamToBuffer(pdfStream);
 

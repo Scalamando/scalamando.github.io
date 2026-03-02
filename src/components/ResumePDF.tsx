@@ -1,4 +1,4 @@
-import { Document, Page, Text, View, StyleSheet, Font, Link, Svg, Path } from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet, Font, Link } from "@react-pdf/renderer";
 import path from "node:path";
 import { colors } from "../styles/theme";
 import type { CollectionEntry } from "astro:content";
@@ -128,15 +128,61 @@ const styles = StyleSheet.create({
 	asideContent: {
 		fontFamily: "Atkinson Hyperlegible",
 	},
+
+	/* Projects on 2nd page */
+	projectsPage: {
+		fontFamily: "Ranade",
+		fontSize: 10,
+		fontWeight: 400,
+		lineHeight: 1.6,
+		color: colors.slate[500],
+		paddingHorizontal: 36,
+		paddingVertical: 40,
+	},
+	projectsHeading: {
+		fontSize: 14,
+		fontWeight: 700,
+		color: colors.cyan[500],
+	},
+	projectsItems: {
+		paddingTop: 24,
+		gap: 20,
+	},
+	projectItemHeading: {
+		fontSize: 11,
+		fontWeight: 700,
+		color: colors.slate[800],
+		textDecoration: "none",
+	},
+	projectItemDescription: {
+		fontFamily: "Atkinson Hyperlegible",
+		marginTop: 6,
+		maxWidth: 320,
+	},
+	projectRepoText: {
+		fontFamily: "Atkinson Hyperlegible",
+		marginTop: 4,
+		maxWidth: 320,
+		color: colors.slate[500],
+	},
+	projectRepoLink: {
+		fontFamily: "Atkinson Hyperlegible",
+		color: colors.cyan[600],
+		textDecoration: "none",
+		fontWeight: 700,
+		maxWidth: 320,
+	},
 });
 
 // Create Document Component
 export default ({
 	site,
 	experiences,
+	projects,
 }: {
 	site: URL;
 	experiences: Array<CollectionEntry<"experience">>;
+	projects: Array<CollectionEntry<"projects">>;
 }) => (
 	<Document>
 		<Page size="A4" style={styles.page}>
@@ -206,38 +252,6 @@ export default ({
 						Git, Docker (Compose), GitHub & -Lab (incl. CI/CD), Turborepo, Netlify, Hetzner, Figma
 					</Text>
 
-					<Text style={styles.asideHeading}>Selected Project</Text>
-
-					<Link
-						src={new URL(`/projects/media-moments`, site).toString()}
-						style={[
-							styles.asideSubHeading,
-							{ flexDirection: "row", gap: 2, textDecoration: "none" },
-						]}
-					>
-						<Text>Media Moments</Text>
-						<Svg
-							width="11"
-							height="11"
-							viewBox="0 0 24 24"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<Path
-								style={{ strokeWidth: 2 }}
-								stroke={colors.slate[700]}
-								d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"
-							/>
-							<Path style={{ strokeWidth: 2 }} stroke={colors.slate[700]} d="M11 13l9 -9" />
-							<Path style={{ strokeWidth: 2 }} stroke={colors.slate[700]} d="M15 4h5v5" />
-						</Svg>
-					</Link>
-					<Text style={styles.asideContent}>
-						Event companion app that enables visitors to experience first semester media informatics
-						students' projects. Among other things, projects have to be unlocked at different
-						locations in the city of Lübeck which can be found using the builtin map.
-					</Text>
-
 					<Text style={styles.asideHeading}>Education</Text>
 
 					<Text style={styles.asideSubHeading}>Universität zu Lübeck</Text>
@@ -251,5 +265,33 @@ export default ({
 				</View>
 			</View>
 		</Page>
+		<Page size="A4" style={styles.projectsPage}>
+			<Text style={styles.projectsHeading}>Some of My Projects</Text>
+			<View style={styles.projectsItems}>
+				{projects.map((project) => (
+					<View key={project.id}>
+						<Link
+							src={new URL(`/projects/${project.id}`, site).toString()}
+							style={styles.projectItemHeading}
+						>
+							{project.data.title}
+						</Link>
+						<Text style={styles.projectItemDescription}>{project.data.resumeDescription}</Text>
+						{project.data.link && (
+							<>
+								<Text style={styles.projectRepoText}>Open-source and available on GitHub:</Text>
+								<Link src={project.data.link} style={styles.projectRepoLink}>
+									{formatUrlForPrint(project.data.link)}
+								</Link>
+							</>
+						)}
+					</View>
+				))}
+			</View>
+		</Page>
 	</Document>
 );
+
+function formatUrlForPrint(url: string) {
+	return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}

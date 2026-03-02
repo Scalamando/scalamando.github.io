@@ -1,9 +1,19 @@
 ---
 title: Media Moments
 titleShort: Media Moments
-description: As a contributor to the 'Meetup der Medieninformatik,' I conceptualized and brought to life the Media Moments web app. This application empowers pedestrians to connect with the projects crafted by first-semester media informatics students. Navigating the city of Lübeck, users can explore an interactive map pinpointing various project locations. The app seamlessly integrates with the physical world, allowing users to unlock exclusive content by simply scanning the QR code at each project site.
+description: >-
+  As a contributor to the 'Meetup der Medieninformatik,' I conceptualized and
+  brought to life the Media Moments web app. This application empowers
+  pedestrians to connect with the projects crafted by first-semester media
+  informatics students. Navigating the city of Lübeck, users can explore an
+  interactive map pinpointing various project locations. The app seamlessly
+  integrates with the physical world, allowing users to unlock exclusive content
+  by simply scanning the QR code at each project site.
 image: "./media-moments.png"
-imageAlt: "Three smartphone mockups of the Media Moments app: a city map with project markers, a stations list with locked and unlocked project cards, and a QR code input dialog used to unlock content during the event."
+imageAlt: >-
+  Three smartphone mockups of the Media Moments app: a city map with project
+  markers, a stations list with locked and unlocked project cards, and a QR
+  code input dialog used to unlock content during the event.
 lastUpdate: 2024-02-07T15:42:00
 sortOrder: 3
 workInProgress: true
