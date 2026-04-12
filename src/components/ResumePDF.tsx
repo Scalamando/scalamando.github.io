@@ -31,7 +31,7 @@ Font.register({
 	fontWeight: 700,
 });
 
-const headerHeight = 100;
+const headerHeight = 120;
 
 const styles = StyleSheet.create({
 	// Create styles
@@ -58,12 +58,16 @@ const styles = StyleSheet.create({
 	heading: {
 		fontSize: 32,
 		fontWeight: 700,
-		color: colors.cyan[400],
+		color: colors.cyan[500],
 		lineHeight: 1,
 		marginBottom: 12,
 	},
 	subheading: {
 		color: colors.slate[500],
+	},
+	description: {
+		color: colors.slate[800],
+		marginTop: 8,
 	},
 	experience: {},
 	experienceHeading: {
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
 		fontSize: 11,
 		color: colors.slate[600],
 	},
-	experienceCompany: {
+	experiencePosition: {
 		color: colors.slate[800],
 		fontWeight: 700,
 	},
@@ -120,6 +124,10 @@ const styles = StyleSheet.create({
 		fontFamily: "Atkinson Hyperlegible",
 		paddingTop: 12,
 		height: headerHeight,
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "flex-start",
+		gap: 1,
 	},
 	contactLink: {
 		color: colors.slate[500],
@@ -128,16 +136,8 @@ const styles = StyleSheet.create({
 	asideContent: {
 		fontFamily: "Atkinson Hyperlegible",
 	},
-
-	/* Projects on 2nd page */
-	projectsPage: {
-		fontFamily: "Ranade",
-		fontSize: 10,
-		fontWeight: 400,
-		lineHeight: 1.6,
-		color: colors.slate[500],
-		paddingHorizontal: 36,
-		paddingVertical: 40,
+	projects: {
+		marginTop: 4,
 	},
 	projectsHeading: {
 		fontSize: 14,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
 		color: colors.cyan[500],
 	},
 	projectsItems: {
-		paddingTop: 24,
+		paddingTop: 12,
 		gap: 20,
 	},
 	projectItemHeading: {
@@ -189,7 +189,11 @@ export default ({
 			<View style={styles.main}>
 				<View style={styles.header}>
 					<Text style={styles.heading}>Raimund Canzler</Text>
-					<Text style={styles.subheading}>Web Developer and UX/UI Designer</Text>
+					<Text style={styles.subheading}>M.Sc. Media Informatics, Full-Stack Developer</Text>
+					<Text style={styles.description}>
+						I am a software engineer with a background in human-computer interaction who enjoys
+						making ideas come to life with code - for work, friends and myself.
+					</Text>
 				</View>
 
 				<View style={styles.experience}>
@@ -198,10 +202,11 @@ export default ({
 						{experiences.map((exp) => (
 							<View style={styles.experienceItem}>
 								<Text style={styles.experienceItemHeading}>
-									<Text style={styles.experienceCompany}>{exp.data.company}</Text> &middot;{" "}
-									{exp.data.position}
+									<Text style={styles.experiencePosition}>{exp.data.position}</Text> &middot;{" "}
+									{exp.data.type}
 								</Text>
 								<Text style={styles.experienceTime}>
+									{exp.data.company}, {exp.data.location},{" "}
 									{exp.data.start.toLocaleDateString("en-US", { month: "long", year: "numeric" })} -{" "}
 									{exp.data.end?.toLocaleDateString("en-US", { month: "long", year: "numeric" }) ??
 										"Present"}
@@ -218,6 +223,31 @@ export default ({
 						))}
 					</View>
 				</View>
+
+				<View style={styles.projects}>
+					<Text style={styles.projectsHeading}>Some of My Projects</Text>
+					<View style={styles.projectsItems}>
+						{projects.map((project) => (
+							<View key={project.id}>
+								<Link
+									src={new URL(`/projects/${project.id}`, site).toString()}
+									style={styles.projectItemHeading}
+								>
+									{project.data.title}
+								</Link>
+								<Text style={styles.projectItemDescription}>{project.data.resumeDescription}</Text>
+								{project.data.link && (
+									<>
+										<Text style={styles.projectRepoText}>Open-source and available on GitHub:</Text>
+										<Link src={project.data.link} style={styles.projectRepoLink}>
+											{formatUrlForPrint(project.data.link)}
+										</Link>
+									</>
+								)}
+							</View>
+						))}
+					</View>
+				</View>
 			</View>
 			<View style={styles.aside}>
 				<View style={styles.contact}>
@@ -226,6 +256,9 @@ export default ({
 					</Link>
 					<Link src="tel:+4915737930783" style={styles.contactLink}>
 						+49 1573 7930783
+					</Link>
+					<Link src="https://linkedin.com/in/raimund-canzler" style={styles.contactLink}>
+						linkedin.com/in/raimund-canzler
 					</Link>
 					<Link src="https://github.com/Scalamando" style={styles.contactLink}>
 						github.com/Scalamando
@@ -239,54 +272,32 @@ export default ({
 
 					<Text style={styles.asideSubHeading}>Programming Languages</Text>
 					<Text style={styles.asideContent}>
-						Java-/TypeScript, PHP, Python, Nix, Bash, HTML, CSS
+						Java-/TypeScript, PHP, Python, Nix, Bash, HTML, (S)CSS, Go-lang, Elixir
 					</Text>
 
 					<Text style={styles.asideSubHeading}>Libraries & Frameworks</Text>
 					<Text style={styles.asideContent}>
-						Vue & Nuxt, React, Tailwindcss, Express/Fastify, Vite
+						Vue & Nuxt, React, Web Components, Vuex/Pinia, TanStack Query, Tailwindcss,
+						Express/Fastify, Vite, Webpack
 					</Text>
 
 					<Text style={styles.asideSubHeading}>Tools & Platforms</Text>
 					<Text style={styles.asideContent}>
-						Git, Docker (Compose), GitHub & -Lab (incl. CI/CD), Turborepo, Netlify, Hetzner, Figma
+						Git, Docker (Compose), GitHub & -Lab (incl. CI/CD), Turborepo, Nix(OS), Netlify,
+						Hetzner, Figma, Affinity Suite, Miro, Adobe After Effects, Adobe Premiere Pro, MS Office
 					</Text>
 
 					<Text style={styles.asideHeading}>Education</Text>
 
 					<Text style={styles.asideSubHeading}>Universität zu Lübeck</Text>
-					<Text style={styles.asideContent}>Media Informatics, B.Sc.</Text>
 					<Text style={styles.asideContent}>Media Informatics, M.Sc.</Text>
+					<Text style={styles.asideContent}>Media Informatics, B.Sc.</Text>
 
 					<Text style={styles.asideHeading}>Interests</Text>
 					<Text style={{ ...styles.asideContent, marginTop: 8 }}>
 						Kite surfing, rock climbing, smart home & self-hosting, baking, gaming
 					</Text>
 				</View>
-			</View>
-		</Page>
-		<Page size="A4" style={styles.projectsPage}>
-			<Text style={styles.projectsHeading}>Some of My Projects</Text>
-			<View style={styles.projectsItems}>
-				{projects.map((project) => (
-					<View key={project.id}>
-						<Link
-							src={new URL(`/projects/${project.id}`, site).toString()}
-							style={styles.projectItemHeading}
-						>
-							{project.data.title}
-						</Link>
-						<Text style={styles.projectItemDescription}>{project.data.resumeDescription}</Text>
-						{project.data.link && (
-							<>
-								<Text style={styles.projectRepoText}>Open-source and available on GitHub:</Text>
-								<Link src={project.data.link} style={styles.projectRepoLink}>
-									{formatUrlForPrint(project.data.link)}
-								</Link>
-							</>
-						)}
-					</View>
-				))}
 			</View>
 		</Page>
 	</Document>

@@ -43,10 +43,11 @@ experiences.sort((a, b) =>
 						</div>
 						<div>
 							<h2 class="text-2xl leading-tight font-bold">
-								{exp.data.company} <span class="hidden sm:inline">&middot;&#32;</span>
-								<br class="sm:hidden" /> <span class="font-normal">{exp.data.position}</span>
+								{exp.data.position} <span class="hidden sm:inline">&middot;&#32;</span>
+								<br class="sm:hidden" /> <span class="font-normal text-xl">{exp.data.type}</span>
 							</h2>
 							<p class="text-black/80">
+								{exp.data.company}, {exp.data.location},{" "}
 								<time datetime={exp.data.start.toISOString()}>
 									{exp.data.start.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
 								</time>{" "}
@@ -61,7 +62,7 @@ experiences.sort((a, b) =>
 							</p>
 							<ul class="mt-2 list-disc space-y-1">
 								{exp.data.description.map((line) => (
-									<li class="ml-4 md max-w-[70ch]" set:html={markdownToHtml(line)} />
+									<li class="md ml-4 max-w-[70ch]" set:html={markdownToHtml(line)} />
 								))}
 							</ul>
 						</div>
