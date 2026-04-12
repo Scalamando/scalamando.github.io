@@ -13,7 +13,6 @@ imageAlt: >-
 lastUpdate: 2026-02-28T14:18:00
 sortOrder: 1
 workInProgress: true
-inResume: true
 resumeDescription: >-
   BuntesLübeck is a GPS-based competitive team game where players virtually
   paint real-world areas and fight for territorial control in real time. I

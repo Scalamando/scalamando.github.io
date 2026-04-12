@@ -14,7 +14,6 @@ imageAlt: >-
 lastUpdate: 2024-02-07T15:42:00
 sortOrder: 3
 workInProgress: true
-inResume: true
 resumeDescription: >-
   I designed and developed the tech.festival landing page (first release in
   2021, major redesign in 2025) for the yearly 4-day student workshop event by
