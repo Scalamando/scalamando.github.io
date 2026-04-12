@@ -7,7 +7,13 @@ import IconPin from "~icons/tabler/pin";
 import IconMapPin from "~icons/tabler/map-pin";
 
 const experiences = await getCollection("experience");
-experiences.sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
+experiences.sort((a, b) =>
+	a.data.end == null
+		? -1
+		: b.data.end == null
+			? 1
+			: b.data.start.getTime() - a.data.start.getTime(),
+);
 ---
 
 <Layout title="Raimund - Web Developer and UX/UI Designer">

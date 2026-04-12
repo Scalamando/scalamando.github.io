@@ -5,7 +5,13 @@ import { getCollection } from "astro:content";
 
 export const GET: APIRoute = async ({ site }) => {
 	const experiences = await getCollection("experience");
-	experiences.sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
+	experiences.sort((a, b) =>
+		a.data.end == null
+			? -1
+			: b.data.end == null
+				? 1
+				: b.data.start.getTime() - a.data.start.getTime(),
+	);
 
 	const projects = await getCollection("projects");
 	const resumeProjects = projects
